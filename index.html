@@ -50,7 +50,7 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .cover-meta strong{color:rgba(255,255,255,.42);display:block;margin-bottom:.1rem}
 
 /* Legend */
-.legend{background:var(--surface);border:1px solid var(--rule);padding:1.5rem 2rem;margin:2rem 0;box-shadow:var(--shadow);font-size:.76rem}
+.legend{background:var(--surface);border:1px solid var(--rule);padding:1.5rem 2rem;margin:2rem 0;box-shadow:var(--shadow);font-size:.76rem;width:100%;box-sizing:border-box}
 .legend h3{font-family:'Crimson Pro',serif;font-size:1rem;color:var(--navy);margin-bottom:.6rem}
 .legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem}
 .legend-item{display:flex;align-items:center;gap:.4rem}
@@ -60,7 +60,7 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .doc{max-width:920px;margin:0 auto;padding:0 2rem}
 
 /* Master TOC */
-.master-toc{background:var(--surface);border:1px solid var(--rule);padding:2.5rem;margin:3rem 0;box-shadow:var(--shadow)}
+.master-toc{background:var(--surface);border:1px solid var(--rule);padding:2.5rem;margin:3rem 0;box-shadow:var(--shadow);width:100%;box-sizing:border-box}
 .master-toc h2{font-family:'Crimson Pro',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
 .mtoc-line{width:24px;height:2px;background:var(--gold);margin-bottom:1.5rem}
 .mtoc-part{margin-bottom:1rem}
@@ -69,6 +69,14 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .mtoc-item{padding:.12rem 0;border-bottom:1px dotted var(--rule-lt)}
 .mtoc-item a{text-decoration:none;color:var(--body);font-size:.74rem;transition:color .15s}
 .mtoc-item a:hover{color:var(--navy)}
+
+/* Part TOC (Section-level table of contents) */
+.toc-line,.toc-rule{width:24px;height:2px;background:var(--gold);margin:1.5rem 0}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem;background:var(--surface);border:1px solid var(--rule);padding:1.5rem 2rem;margin-bottom:1.5rem;box-shadow:var(--shadow)}
+.toc-item{padding:.25rem 0;border-bottom:1px dotted var(--rule-lt);display:flex;align-items:baseline;gap:.5rem}
+.toc-item a{text-decoration:none;color:var(--body);font-size:.76rem;transition:color .15s}
+.toc-item a:hover{color:var(--navy)}
+.toc-n,.toc-num{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold);font-weight:600;min-width:1.5rem}
 
 /* Part Headers */
 .part-header{background:var(--navy);color:#fff;padding:2rem 2.5rem;margin:2.5rem 0 1rem;position:relative;overflow:hidden}
@@ -5331,34 +5339,31 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
   <h4>Scalability Preparation</h4>
   <div class="cl-item">Review folder structure for MFO compatibility (LP folders, multi-entity support)</div>
   <div class="cl-item">Prepare LP reporting infrastructure (Template T7 adapted for external families)</div>
-  <div class="cl-item">Document all processes in Notion wiki for new team member onboarding
-  <div class="cl-item">Create team onboarding guide: accounts, tools, access, workflow orientation
+  <div class="cl-item">Document all processes in Notion wiki for new team member onboarding</div>
+  <div class="cl-item">Create team onboarding guide: accounts, tools, access, workflow orientation</div>
 
   <div class="box-sage">
     <strong>Completion Milestone:</strong> At the end of Phase 3 (Day 180), the family office should have: a fully structured document management system, 7 core workflows operational with AI integration, 6+ AI agents deployed and producing daily value, automated reporting for monthly and quarterly cadence, and a documented operations manual that any new team member can follow from Day 1.
-  
-
+  </div>
+</div>
 
 <!-- ═══ FOOTER ═══ -->
-
+<div class="s">
   <p>Confidential Internal Operations Manual · Blueprint Part VII · Version 1.0 · 2026</p>
   <p>This document is for internal operational use. Implementation timelines assume a founding team of 5–6 with an AI &amp; Data Lead in place from Day 1.</p>
+</div>
 
-
-
-
+</div><!-- end .doc -->
 
 <!-- FOOTER -->
 <div class="footer">
-  <div class="footer-brand">AI-First Family Office — Complete Master Blueprint
+  <div class="footer-brand">AI-First Family Office — Complete Master Blueprint</div>
   <p>Confidential · Final Integrated Version 1.0 · 2026</p>
   <p>This document integrates seven specialized blueprint modules (Strategic Foundation, Organizational Architecture, Investment Strategy,<br>
   AI Operating System, Investment Process, Templates, and Internal Operations) into one unified institutional framework.<br>
   All content retained in full. Terminology harmonized. Design standardized. Ready for Word/PDF export.<br><br>
   This document is for internal strategic planning purposes only and does not constitute investment, legal, or tax advice.<br>
   All projections are illustrative and based on assumptions that may not reflect future outcomes.</p>
+</div>
 
-
-
-
-</div></div></div></div></div></div></body></html>
+</body></html>
