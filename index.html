@@ -43,15 +43,15 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .cover-meta strong{color:rgba(255,255,255,.42);display:block;margin-bottom:.1rem}
 
 /* Legend */
-.legend{background:var(--surface);border:1px solid var(--rule);padding:2rem 3rem;margin:2rem 2rem;box-shadow:var(--shadow);font-size:.76rem}
+.legend{background:var(--surface);border:1px solid var(--rule);padding:1.5rem 2rem;margin-bottom:1.5rem;box-shadow:var(--shadow);font-size:.76rem}
 .legend h3{font-family:'Crimson Pro',serif;font-size:1rem;color:var(--navy);margin-bottom:.8rem}
 .legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.6rem .8rem}
 .legend-item{display:flex;align-items:center;gap:.5rem}
 .legend-swatch{width:14px;height:14px;flex-shrink:0;border:1px solid var(--rule)}
 
 /* Contents Intro Page */
-.contents-intro{padding:2rem 0 1rem;page-break-after:always}
-.contents-intro-inner{background:#fff;padding:2.5rem 3rem;border:1px solid var(--rule);box-shadow:var(--shadow);margin:0 2rem}
+.contents-intro{padding:1rem 0;page-break-after:always}
+.contents-intro-inner{background:#fff;padding:2rem;border:1px solid var(--rule);box-shadow:var(--shadow)}
 .contents-intro h2{font-family:'Crimson Pro',serif;font-size:1.5rem;color:var(--navy);font-weight:700;margin-bottom:.2rem}
 .contents-intro-line{width:24px;height:2px;background:var(--gold);margin:0 0 1.2rem}
 .contents-intro-text{font-size:.85rem;color:var(--navy-60);line-height:1.7;margin-bottom:1.8rem;max-width:none}
@@ -60,15 +60,15 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .cim-num{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold);font-weight:600;min-width:1.2rem}
 
 /* Appendix Legend */
-.appendix-legend{background:var(--surface);border:1px solid var(--rule);padding:2.5rem 3rem;margin:4rem 2rem 2rem;page-break-before:always}
+.appendix-legend{background:var(--surface);border:1px solid var(--rule);padding:2rem;margin-top:2rem;page-break-before:always}
 .appendix-legend h3{font-family:'Crimson Pro',serif;font-size:1.2rem;color:var(--navy);margin-bottom:.4rem}
 .appendix-legend-intro{font-size:.8rem;color:var(--caption);margin-bottom:1.2rem}
 
 /* Layout */
-.doc{max-width:100%;margin:0 auto;padding:0}
+.doc{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
 
 /* Master TOC */
-.master-toc{background:var(--surface);border:1px solid var(--rule);padding:2.5rem 4rem;margin:3rem 2rem;box-shadow:var(--shadow)}
+.master-toc{background:var(--surface);border:1px solid var(--rule);padding:2rem;margin-bottom:1.5rem;box-shadow:var(--shadow)}
 .master-toc h2{font-family:'Crimson Pro',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
 .mtoc-line{width:24px;height:2px;background:var(--gold);margin-bottom:1.5rem}
 .mtoc-part{margin-bottom:1.5rem}
@@ -79,7 +79,7 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .mtoc-item a:hover{color:var(--navy)}
 
 /* Part Headers */
-.part-header{background:var(--navy);color:#fff;padding:2.5rem 4rem;margin:0;position:relative;overflow:hidden}
+.part-header{background:var(--navy);color:#fff;padding:2rem;margin:0 0 1rem;position:relative;overflow:hidden}
 .part-header::after{content:'';position:absolute;right:0;top:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(138,92,20,.08))}
 .part-header>*{position:relative;z-index:1}
 .part-num{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:.3rem}
@@ -87,7 +87,7 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .part-desc{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:.3rem;max-width:700px}
 
 /* Sections */
-.s,.tmpl-section{background:var(--surface);border:1px solid var(--rule);padding:2.2rem 3rem;margin:0 2rem 1rem;box-shadow:var(--shadow)}
+.s,.tmpl-section{background:var(--surface);border:1px solid var(--rule);padding:2rem;margin-bottom:1rem;box-shadow:var(--shadow)}
 .s-tag,.s-num,.section-number{font-family:'JetBrains Mono',monospace;font-size:.54rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
 .s h2,.section h2{font-family:'Crimson Pro',serif;font-size:1.3rem;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:.2rem}
 .s-line,.s-rule,.section-line{width:20px;height:2px;background:var(--gold);margin-bottom:1.3rem}
@@ -266,17 +266,86 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
   .master-toc{page-break-after:always}
 }
 @media(max-width:768px){
-  .cover h1{font-size:2rem}
-  .mtoc-items{grid-template-columns:1fr}
-  .s,.tmpl-section,.tmpl-body{padding:1.2rem 1rem}
+  /* Container - no padding on mobile */
+  .doc{padding:.5rem}
+  
+  /* Base typography */
+  html{font-size:15px}
+  body{line-height:1.8}
+  
+  /* Cover */
+  .cover{padding:2rem .75rem}
+  .cover h1{font-size:1.8rem;line-height:1.15}
+  .cover-sub{font-size:.95rem}
+  .cover-tag{font-size:.5rem;padding:.4rem 1rem;letter-spacing:3px}
+  .cover-meta{flex-direction:column;gap:.8rem;font-size:.55rem}
+  
+  /* Contents intro */
+  .contents-intro{padding:0}
+  .contents-intro-inner{padding:.75rem;border-radius:0;border-left:none;border-right:none}
+  .contents-intro h2{font-size:1.3rem}
+  .contents-intro-text{font-size:.9rem}
+  .cim{font-size:.85rem}
+  
+  /* Master TOC */
+  .master-toc{padding:.75rem;border-radius:0;border-left:none;border-right:none}
+  .master-toc h2{font-size:1.3rem}
+  .mtoc-items{grid-template-columns:1fr;gap:.1rem}
+  .mtoc-item a{font-size:.8rem}
+  .mtoc-part{margin-bottom:1.2rem}
+  
+  /* Part headers */
+  .part-header{padding:1rem .75rem;margin:0 -.5rem .5rem}
+  .part-title{font-size:1.3rem}
+  .part-desc{font-size:.85rem}
+  
+  /* Sections */
+  .s,.tmpl-section,.tmpl-body{padding:.75rem;margin-bottom:.5rem;border-radius:0;border-left:none;border-right:none}
+  .s h2,.section h2{font-size:1.15rem}
+  .s h3,.section h3{font-size:.9rem}
+  .s p,.section p{font-size:.88rem}
+  .s ul,.s ol,.section ul,.section ol{font-size:.86rem;margin-left:.8rem}
+  
+  /* Tables - horizontal scroll */
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -.75rem;padding:0 .75rem}
+  table{min-width:500px;font-size:.72rem}
+  thead th{padding:.5rem .6rem;font-size:.6rem}
+  tbody td{padding:.45rem .6rem}
+  
+  /* Grids to single column */
   .grid,.card-grid{grid-template-columns:1fr}
-  .cover-meta{flex-direction:column;gap:.5rem}
-  .org-row{flex-direction:column;align-items:center}
-  .wf,.process-flow,.flow{flex-direction:column}
+  .org-row{flex-direction:column;align-items:stretch}
   .agent-body,.role-grid{grid-template-columns:1fr}
   .matrix{grid-template-columns:1fr}
-  .field-row,.template-field,.tmpl-field{flex-direction:column}
-  .field-label,.template-label,.tmpl-label{min-width:auto}
+  .kpi-row{flex-direction:column;gap:.8rem}
+  
+  /* Cards and boxes */
+  .card,.agent,.kpi{padding:.75rem}
+  .box,.box-gold,.box-sage,.box-sky,.box-amber,.box-coral,.box-cyan{padding:.75rem;margin:.5rem 0}
+  
+  /* Workflow/process flows */
+  .wf,.process-flow,.flow{flex-direction:column;gap:.5rem}
+  .wf-step,.flow-step{min-width:auto;width:100%}
+  .wf-arrow,.flow-arrow{transform:rotate(90deg);align-self:center}
+  
+  /* Templates and forms */
+  .field-row,.template-field,.tmpl-field{flex-direction:column;gap:.2rem}
+  .field-label,.template-label,.tmpl-label{min-width:auto;font-size:.75rem}
+  .tmpl,.template,.checklist{padding:.75rem}
+  .tmpl-header{padding:.6rem .75rem;flex-direction:column;align-items:flex-start;gap:.5rem}
+  
+  /* Roles */
+  .role{padding:.75rem}
+  .role-grid{gap:.6rem}
+  
+  /* Legend */
+  .legend{padding:.75rem;border-radius:0;border-left:none;border-right:none}
+  .legend-grid{grid-template-columns:1fr}
+  .appendix-legend{padding:.75rem;border-radius:0;border-left:none;border-right:none}
+  
+  /* Footer */
+  .footer{padding:1.5rem .75rem;font-size:.65rem}
+  .footer-brand{font-size:.9rem}
 }
 </style>
 </head>
@@ -5424,4 +5493,16 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 </div>
 
 </div>
+
+<script>
+// Wrap tables in scrollable container for mobile
+document.querySelectorAll('table').forEach(function(table) {
+  if (!table.parentElement.classList.contains('table-wrap')) {
+    var wrapper = document.createElement('div');
+    wrapper.className = 'table-wrap';
+    table.parentNode.insertBefore(wrapper, table);
+    wrapper.appendChild(table);
+  }
+});
+</script>
 </body></html>
