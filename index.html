@@ -66,6 +66,55 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .cim-icon svg{width:100%;height:100%}
 .cim-num{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold);font-weight:600;min-width:1.6rem}
 
+/* Executive Summary */
+.exec-summary{background:#fff;border:1px solid var(--rule);padding:2.5rem;margin-bottom:2rem;box-shadow:var(--shadow)}
+.exec-header h2{font-family:'Crimson Pro',serif;font-size:1.5rem;color:var(--navy);font-weight:700;margin-bottom:.3rem}
+.exec-line{width:24px;height:2px;background:var(--gold);margin-bottom:1.5rem}
+.exec-vision{margin-bottom:2rem}
+.exec-lead{font-size:1rem;color:var(--navy);line-height:1.7;font-weight:500;border-left:3px solid var(--gold);padding-left:1rem;margin:0}
+.exec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:2rem}
+.exec-card{background:var(--surface);border:1px solid var(--rule);padding:1.2rem;border-radius:6px}
+.exec-card-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule-lt)}
+.exec-icon{font-size:1.2rem}
+.exec-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold);font-weight:600}
+.exec-metrics{display:flex;gap:1.5rem}
+.exec-metric{text-align:center}
+.exec-value{display:block;font-family:'Crimson Pro',serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+.exec-desc{font-size:.65rem;color:var(--caption);text-transform:uppercase;letter-spacing:.5px}
+.exec-alloc{display:flex;flex-direction:column;gap:.4rem}
+.exec-alloc-row{display:flex;justify-content:space-between;font-size:.8rem;color:var(--body);padding:.25rem 0;border-bottom:1px dotted var(--rule-lt)}
+.exec-pct{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--navy)}
+.exec-list{display:flex;flex-direction:column;gap:.35rem}
+.exec-list-item{font-size:.8rem;color:var(--body);padding-left:.8rem;position:relative}
+.exec-list-item::before{content:'';position:absolute;left:0;top:.45rem;width:4px;height:4px;background:var(--gold);border-radius:50%}
+.exec-team-section{background:var(--surface);border:1px solid var(--rule);padding:1.2rem;border-radius:6px;margin-bottom:2rem}
+.exec-team{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:.8rem}
+.exec-team-role{text-align:center;padding:.8rem .5rem;background:#fff;border:1px solid var(--rule-lt);border-radius:4px}
+.exec-role-title{display:block;font-size:.75rem;font-weight:600;color:var(--navy);margin-bottom:.2rem}
+.exec-role-desc{font-size:.65rem;color:var(--caption)}
+.exec-kpis{display:flex;justify-content:space-around;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-60) 100%);padding:1.5rem;border-radius:6px}
+.exec-kpi{text-align:center}
+.exec-kpi-value{display:block;font-family:'Crimson Pro',serif;font-size:1.6rem;font-weight:700;color:var(--gold-lt)}
+.exec-kpi-label{font-size:.68rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.5px}
+
+/* Implementation Roadmap */
+.roadmap-section{background:#fff;border:1px solid var(--rule);padding:2.5rem;margin-bottom:2rem;box-shadow:var(--shadow)}
+.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2rem}
+.roadmap-phase{background:var(--surface);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.roadmap-phase-header{background:var(--navy);padding:.8rem 1rem;display:flex;flex-direction:column;gap:.15rem}
+.roadmap-phase-num{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-lt)}
+.roadmap-phase-title{font-family:'Crimson Pro',serif;font-size:1rem;font-weight:700;color:#fff}
+.roadmap-phase-time{font-size:.68rem;color:rgba(255,255,255,.5)}
+.roadmap-items{padding:1rem}
+.roadmap-item{font-size:.75rem;color:var(--body);padding:.4rem 0 .4rem 1.2rem;position:relative;border-bottom:1px dotted var(--rule-lt)}
+.roadmap-item:last-child{border-bottom:none}
+.roadmap-item::before{content:'○';position:absolute;left:0;color:var(--rule);font-size:.6rem}
+.roadmap-item.done::before{content:'●';color:var(--gold)}
+.roadmap-milestones{display:flex;justify-content:space-between;background:var(--gold-bg);padding:1rem 1.5rem;border-radius:6px;border:1px solid rgba(176,120,24,.2)}
+.milestone{display:flex;align-items:center;gap:.6rem}
+.milestone-date{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;color:var(--gold);background:var(--navy);padding:.25rem .5rem;border-radius:3px;color:var(--gold-lt)}
+.milestone-text{font-size:.72rem;color:var(--navy)}
+
 /* Appendix Legend */
 .appendix-legend{background:var(--surface);border:1px solid var(--rule);padding:2rem;margin-top:2rem;page-break-before:always}
 .appendix-legend h3{font-family:'Crimson Pro',serif;font-size:1.2rem;color:var(--navy);margin-bottom:.4rem}
@@ -475,8 +524,9 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 .checklist-group strong{display:block;font-size:.78rem;color:var(--navy-60);margin-bottom:.3rem}
 
 /* Template section headers */
-.tmpl-header{background:var(--navy);color:#fff;padding:1rem 1.8rem;display:flex;align-items:center;gap:1rem}
-.tmpl-badge{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-lt);background:rgba(176,120,24,.2);padding:.25rem .7rem;flex-shrink:0}
+.tmpl-header{background:linear-gradient(135deg,var(--navy) 0%,#2a4a6b 100%);color:#fff;padding:1rem 1.8rem;display:flex;align-items:center;gap:1rem;border-left:4px solid var(--gold)}
+.tmpl-badge{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:#fff;background:var(--gold);padding:.3rem .8rem;flex-shrink:0;font-weight:600}
+.tmpl-header .tmpl-title{font-family:'Crimson Pro',serif;font-size:1.1rem;font-weight:600;color:#fff;letter-spacing:0;text-transform:none;border:none;margin:0;padding:0}
 .tmpl-body{padding:2rem 2.2rem}
 .tmpl-body h3{font-family:'Crimson Pro',serif;font-size:1rem;font-weight:700;color:var(--navy-60);margin:1.5rem 0 .5rem;padding-bottom:.25rem;border-bottom:1px solid var(--rule-lt)}
 .tmpl-body h4{font-size:.85rem;font-weight:700;color:var(--navy-40);margin:1rem 0 .3rem}
@@ -884,6 +934,7 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
     <div class="mtoc-item"><a href="#og-s15">Talent Strategy</a></div>
     <div class="mtoc-item"><a href="#og-s16">Compensation Structure</a></div>
     <div class="mtoc-item"><a href="#og-s17">Hiring Roadmap (Years 1–5)</a></div>
+    <div class="mtoc-item"><a href="#og-s18">Implementation Roadmap</a></div>
   </div>
 </div>
 <div class="mtoc-part">
@@ -1989,6 +2040,7 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
       <div class="toc-item"><span class="toc-n">15</span><a href="#og-s15">Talent Strategy</a></div>
       <div class="toc-item"><span class="toc-n">16</span><a href="#og-s16">Compensation Structure</a></div>
       <div class="toc-item"><span class="toc-n">17</span><a href="#og-s17">Hiring Roadmap (Years 1–5)</a></div>
+      <div class="toc-item"><span class="toc-n">18</span><a href="#og-s18">Implementation Roadmap</a></div>
     </div>
   </div>
 </div>
@@ -2810,6 +2862,90 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 
   <div class="box-green">
     <strong>Cost Efficiency Trajectory:</strong> As AUM grows (through returns and MFO mandates) while headcount scales at 1/3 the rate, the cost/AUM ratio declines from approximately 1.3% in Year 1 to below 1.0% by Year 5. This is significantly below the 1.5–2.5% range typical of traditional family offices at comparable AUM levels — demonstrating the AI-first leverage model in financial terms.
+  </div>
+</div>
+
+<!-- ═══ 18 · IMPLEMENTATION ROADMAP ═══ -->
+<div class="s" id="og-s18">
+  <div class="s-tag">Part II · Section 18</div>
+  <h2>Implementation Roadmap</h2>
+  <div class="s-line"></div>
+
+  <p>This roadmap outlines the phased implementation of the family office from initial setup through potential multi-family office transition. Each phase builds on the previous, with clear milestones and deliverables.</p>
+
+  <div class="roadmap" id="roadmap">
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <span class="roadmap-phase-num">Phase 1</span>
+        <span class="roadmap-phase-title">Foundation</span>
+        <span class="roadmap-phase-time">Months 1-6</span>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item done">Legal structure & entity setup</div>
+        <div class="roadmap-item done">Core team hiring (CIO search)</div>
+        <div class="roadmap-item done">Investment policy documentation</div>
+        <div class="roadmap-item done">Tech stack & infrastructure</div>
+        <div class="roadmap-item done">Banking & custody relationships</div>
+        <div class="roadmap-item done">Advisory board formation</div>
+      </div>
+    </div>
+    
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <span class="roadmap-phase-num">Phase 2</span>
+        <span class="roadmap-phase-title">Initial Deployment</span>
+        <span class="roadmap-phase-time">Months 6-18</span>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item">First 5-8 direct VC investments</div>
+        <div class="roadmap-item">2-3 fund commitments</div>
+        <div class="roadmap-item">Public market sleeve deployment</div>
+        <div class="roadmap-item">AI deal sourcing system live</div>
+        <div class="roadmap-item">Portfolio monitoring dashboard</div>
+        <div class="roadmap-item">First quarterly reporting cycle</div>
+      </div>
+    </div>
+    
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <span class="roadmap-phase-num">Phase 3</span>
+        <span class="roadmap-phase-title">Scale & Optimize</span>
+        <span class="roadmap-phase-time">Year 2-3</span>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item">Portfolio reaches 20+ positions</div>
+        <div class="roadmap-item">First follow-on investments</div>
+        <div class="roadmap-item">Venture building initiative launch</div>
+        <div class="roadmap-item">Full AI automation stack</div>
+        <div class="roadmap-item">Team expansion (Analyst, Ops)</div>
+        <div class="roadmap-item">Process refinement & playbooks</div>
+      </div>
+    </div>
+    
+    <div class="roadmap-phase">
+      <div class="roadmap-phase-header">
+        <span class="roadmap-phase-num">Phase 4</span>
+        <span class="roadmap-phase-title">MFO Transition</span>
+        <span class="roadmap-phase-time">Year 4-5+</span>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item">First external LP discussions</div>
+        <div class="roadmap-item">Track record documentation</div>
+        <div class="roadmap-item">Fund structure evaluation</div>
+        <div class="roadmap-item">Regulatory preparation (if needed)</div>
+        <div class="roadmap-item">Team scaling for AUM growth</div>
+        <div class="roadmap-item">€200M+ AUM milestone</div>
+      </div>
+    </div>
+  </div>
+  
+  <h3>Key Milestones</h3>
+  <div class="roadmap-milestones">
+    <div class="milestone"><span class="milestone-date">M6</span><span class="milestone-text">Structure complete, team in place</span></div>
+    <div class="milestone"><span class="milestone-date">M12</span><span class="milestone-text">€30M deployed, 10+ positions</span></div>
+    <div class="milestone"><span class="milestone-date">M24</span><span class="milestone-text">€60M deployed, first exits pipeline</span></div>
+    <div class="milestone"><span class="milestone-date">M36</span><span class="milestone-text">Full deployment, venture building active</span></div>
+    <div class="milestone"><span class="milestone-date">M48+</span><span class="milestone-text">MFO evaluation, external capital</span></div>
   </div>
 </div>
 
