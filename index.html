@@ -5,7 +5,7 @@
 <title>AI-First Family Office — Complete Master Blueprint</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,700;1,400&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
    UNIFIED DESIGN SYSTEM v2.0
@@ -48,6 +48,21 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.6rem .8rem}
 .legend-item{display:flex;align-items:center;gap:.5rem}
 .legend-swatch{width:14px;height:14px;flex-shrink:0;border:1px solid var(--rule)}
+
+/* Contents Intro Page */
+.contents-intro{padding:2rem 0 1rem;page-break-after:always}
+.contents-intro-inner{background:#fff;padding:2.5rem 3rem;border:1px solid var(--rule);box-shadow:var(--shadow);margin:0 2rem}
+.contents-intro h2{font-family:'Crimson Pro',serif;font-size:1.5rem;color:var(--navy);font-weight:700;margin-bottom:.2rem}
+.contents-intro-line{width:24px;height:2px;background:var(--gold);margin:0 0 1.2rem}
+.contents-intro-text{font-size:.85rem;color:var(--navy-60);line-height:1.7;margin-bottom:1.8rem;max-width:600px}
+.contents-intro-modules{display:grid;grid-template-columns:1fr 1fr;gap:.35rem 3rem}
+.cim{font-size:.8rem;color:var(--navy-60);display:flex;align-items:center;gap:.7rem}
+.cim-num{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold);font-weight:600;min-width:1.2rem}
+
+/* Appendix Legend */
+.appendix-legend{background:var(--surface);border:1px solid var(--rule);padding:2.5rem 3rem;margin:4rem 2rem 2rem;page-break-before:always}
+.appendix-legend h3{font-family:'Crimson Pro',serif;font-size:1.2rem;color:var(--navy);margin-bottom:.4rem}
+.appendix-legend-intro{font-size:.8rem;color:var(--caption);margin-bottom:1.2rem}
 
 /* Layout */
 .doc{max-width:100%;margin:0 auto;padding:0}
@@ -285,24 +300,27 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 
 <div class="doc">
 
-<!-- COLOR LEGEND -->
-<div class="legend">
-  <h3>Document Legend — Color &amp; Box Guide</h3>
-  <div class="legend-grid">
-    <div class="legend-item"><div class="legend-swatch" style="background:var(--gold-bg);border-left:3px solid var(--gold)"></div> Key principle, strategic definition, or critical rule</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:var(--blue-bg);border-left:3px solid var(--navy-40)"></div> Operational detail, implementation note, or protocol</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:var(--green-bg);border-left:3px solid var(--green)"></div> Best practice, positive outcome, or success criteria</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:var(--amber-bg);border-left:3px solid var(--amber-bd)"></div> Caution, regulatory note, or risk consideration</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:var(--cyan-bg);border-left:3px solid var(--cyan-bd)"></div> AI-specific feature, automation point, or tech note</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:var(--red-bg);border-left:3px solid var(--red-bd)"></div> Hard constraint, non-negotiable limit, or warning</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:var(--navy)"></div> Tables: Navy header = data tables; KPI blocks = key metrics</div>
-    <div class="legend-item"><div class="legend-swatch" style="background:var(--gold)"></div> Gold accent = section markers, agent badges, emphasis</div>
+<!-- CONTENTS INTRO PAGE -->
+<div class="contents-intro">
+  <div class="contents-intro-inner">
+    <h2>Contents</h2>
+    <div class="contents-intro-line"></div>
+    <p class="contents-intro-text">This blueprint comprises seven integrated modules — from strategic foundation through operational workflows — designed as a unified institutional framework for building and scaling an AI-native family office.</p>
+    <div class="contents-intro-modules">
+      <div class="cim"><span class="cim-num">I</span> Strategic Foundation</div>
+      <div class="cim"><span class="cim-num">II</span> Organizational Architecture</div>
+      <div class="cim"><span class="cim-num">III</span> Investment Strategy</div>
+      <div class="cim"><span class="cim-num">IV</span> AI Operating System</div>
+      <div class="cim"><span class="cim-num">V</span> Investment Process</div>
+      <div class="cim"><span class="cim-num">VI</span> Templates & Documents</div>
+      <div class="cim"><span class="cim-num">VII</span> Internal Operations</div>
+    </div>
   </div>
 </div>
 
 <!-- MASTER TABLE OF CONTENTS -->
 <div class="master-toc">
-  <h2>Master Table of Contents</h2>
+  <h2>Detailed Table of Contents</h2>
   <div class="mtoc-line"></div>
   <div class="mtoc-part">
   <div class="mtoc-part-title">Part I — Strategic Foundation</div>
@@ -5377,6 +5395,22 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 
 
 
+
+<!-- ═══ APPENDIX: DOCUMENT LEGEND ═══ -->
+<div class="appendix-legend">
+  <h3>Appendix — Document Legend</h3>
+  <p class="appendix-legend-intro">This document uses a consistent color system to indicate the nature and priority of information:</p>
+  <div class="legend-grid">
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--gold-bg);border-left:3px solid var(--gold)"></div> Key principle, strategic definition, or critical rule</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--blue-bg);border-left:3px solid var(--navy-40)"></div> Operational detail, implementation note, or protocol</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--green-bg);border-left:3px solid var(--green)"></div> Best practice, positive outcome, or success criteria</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--amber-bg);border-left:3px solid var(--amber-bd)"></div> Caution, regulatory note, or risk consideration</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--cyan-bg);border-left:3px solid var(--cyan-bd)"></div> AI-specific feature, automation point, or tech note</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--red-bg);border-left:3px solid var(--red-bd)"></div> Hard constraint, non-negotiable limit, or warning</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--navy)"></div> Tables: Navy header = data tables; KPI blocks = key metrics</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--gold)"></div> Gold accent = section markers, agent badges, emphasis</div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <div class="footer">
