@@ -2,21 +2,22 @@
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI-First Family Office Blueprint</title>
+<title>AI-First Family Office — Vision & Strategy Blueprint</title>
 
 <!-- Link Preview Meta Tags -->
-<meta property="og:title" content="AI-First Family Office Blueprint">
-<meta property="og:description" content="Complete Master Blueprint for an AI-native Family Office — Strategy, Investment Process, AI Operating System, and Implementation.">
+<meta property="og:title" content="AI-First Family Office — Vision & Strategy Blueprint">
+<meta property="og:description" content="A modular framework for building an AI-native single family office — seven integrated modules covering strategy, organization, portfolio construction, AI systems, investment process, templates, and operations.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AI-First Family Office Blueprint">
-<meta name="twitter:description" content="Complete Master Blueprint for an AI-native Family Office — Strategy, Investment Process, AI Operating System, and Implementation.">
-<meta name="description" content="Complete Master Blueprint for an AI-native Family Office — Strategy, Investment Process, AI Operating System, and Implementation.">
-<link href="./AI-First Family Office — Complete Master Blueprint_files/css2" rel="stylesheet">
+<meta name="twitter:title" content="AI-First Family Office — Vision & Strategy Blueprint">
+<meta name="twitter:description" content="A modular framework for building an AI-native single family office — seven integrated modules covering strategy, organization, portfolio construction, AI systems, investment process, templates, and operations.">
+<meta name="description" content="A modular framework for building an AI-native single family office — seven integrated modules covering strategy, organization, portfolio construction, AI systems, investment process, templates, and operations.">
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Montserrat:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
-   UNIFIED DESIGN SYSTEM v2.0
-   Master Blueprint — All 7 Parts Integrated
+   AI-First Family Office Blueprint
+   Fonts: Lora + Montserrat + JetBrains Mono
    ═══════════════════════════════════════════ */
 :root {
   --bg:#f4f3ef;--surface:#fff;--surface-alt:#faf9f5;
@@ -49,9 +50,15 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .cover-meta{display:flex;gap:3rem;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:1.5px;color:rgba(255,255,255,.22);text-transform:uppercase;flex-wrap:wrap;justify-content:center}
 .cover-meta strong{color:rgba(255,255,255,.42);display:block;margin-bottom:.1rem}
 
-/* Legend */
-.legend{background:var(--surface);border:1px solid var(--rule);padding:1.5rem 2rem;margin:2rem 0;box-shadow:var(--shadow);font-size:.76rem;width:100%;box-sizing:border-box}
-.legend h3{font-family:'Crimson Pro',serif;font-size:1rem;color:var(--navy);margin-bottom:.6rem}
+/* Legend Header */
+.legend-header{background:var(--navy);color:#fff;padding:1.5rem 2rem;margin:2.5rem 0 0;position:relative;overflow:hidden}
+.legend-header::after{content:'';position:absolute;right:0;top:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(138,92,20,.08))}
+.legend-header>*{position:relative;z-index:1}
+.legend-header h3{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:#fff;margin:0}
+.legend-header p{font-family:'Montserrat',sans-serif;font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.3rem}
+
+/* Legend Content */
+.legend{background:var(--surface);border:1px solid var(--rule);padding:1.5rem 2rem;margin:0 0 1.5rem;box-shadow:var(--shadow);font-size:.76rem}
 .legend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem}
 .legend-item{display:flex;align-items:center;gap:.4rem}
 .legend-swatch{width:14px;height:14px;flex-shrink:0;border:1px solid var(--rule)}
@@ -59,10 +66,16 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 /* Layout */
 .doc{max-width:920px;margin:0 auto;padding:0 2rem}
 
-/* Master TOC */
-.master-toc{background:var(--surface);border:1px solid var(--rule);padding:2.5rem;margin:3rem 0;box-shadow:var(--shadow);width:100%;box-sizing:border-box}
-.master-toc h2{font-family:'Crimson Pro',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
-.mtoc-line{width:24px;height:2px;background:var(--gold);margin-bottom:1.5rem}
+/* Master TOC Header */
+.mtoc-header{background:var(--navy);color:#fff;padding:1.5rem 2rem;margin:2.5rem 0 0;position:relative;overflow:hidden}
+.mtoc-header::after{content:'';position:absolute;right:0;top:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(138,92,20,.08))}
+.mtoc-header>*{position:relative;z-index:1}
+.mtoc-header h2{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:#fff;margin:0}
+.mtoc-header p{font-family:'Montserrat',sans-serif;font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.3rem}
+
+/* Master TOC Content */
+.master-toc{background:var(--surface);border:1px solid var(--rule);padding:1.5rem 2rem;margin:0 0 1.5rem;box-shadow:var(--shadow)}
+.mtoc-line{width:24px;height:2px;background:var(--gold);margin:1rem 0}
 .mtoc-part{margin-bottom:1rem}
 .mtoc-part-title{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;font-weight:500}
 .mtoc-items{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
@@ -274,26 +287,28 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 
 <!-- COVER -->
 <div class="cover">
-  <div class="cover-tag">Confidential · Complete Master Institutional Blueprint</div>
+  <div class="cover-tag">Confidential · Draft Framework</div>
   <div class="cover-line"></div>
-  <h1>AI-First <em>Family Office</em><br>Master Blueprint</h1>
-  <p class="cover-sub">The complete institutional framework — seven integrated modules covering strategy, organization, portfolio construction, AI systems, investment process, templates, and operational infrastructure — for building and scaling an AI-first family office with €100M+ AUM.</p>
+  <h1>AI-First Family Office<br><em>Vision & Strategy Blueprint</em></h1>
+  <p class="cover-sub">A modular framework for building an AI-native single family office — seven integrated modules covering strategy, organization, portfolio construction, AI systems, investment process, templates, and operations.</p>
   <div class="cover-line"></div>
   <div class="cover-meta">
     <div><strong>Jurisdiction</strong>Germany (BaFin)</div>
-    <div><strong>AUM</strong>€100M+</div>
     <div><strong>Focus</strong>AI · Deep Tech · Software</div>
     <div><strong>Geography</strong>Germany &amp; United States</div>
-    <div><strong>Sections</strong>104 · 7 Parts Integrated</div>
-    <div><strong>Version</strong>Final Master 1.0 · 2026</div>
+    <div><strong>Modules</strong>7 Integrated</div>
+    <div><strong>Version</strong>Draft 1.0 · 2026</div>
   </div>
 </div>
 
 <div class="doc">
 
 <!-- COLOR LEGEND -->
+<div class="legend-header">
+  <h3>Document Legend</h3>
+  <p>Color coding and box styles used throughout this document</p>
+</div>
 <div class="legend">
-  <h3>Document Legend — Color &amp; Box Guide</h3>
   <div class="legend-grid">
     <div class="legend-item"><div class="legend-swatch" style="background:var(--gold-bg);border-left:3px solid var(--gold)"></div> Key principle, strategic definition, or critical rule</div>
     <div class="legend-item"><div class="legend-swatch" style="background:var(--blue-bg);border-left:3px solid var(--navy-40)"></div> Operational detail, implementation note, or protocol</div>
@@ -307,9 +322,11 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 </div>
 
 <!-- MASTER TABLE OF CONTENTS -->
-<div class="master-toc">
+<div class="mtoc-header">
   <h2>Master Table of Contents</h2>
-  <div class="mtoc-line"></div>
+  <p>All seven modules at a glance</p>
+</div>
+<div class="master-toc">
   <div class="mtoc-part">
   <div class="mtoc-part-title">Part I — Strategic Foundation</div>
   <div class="mtoc-items">
