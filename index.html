@@ -34,7 +34,7 @@ html{font-size:14.5px;scroll-behavior:smooth}
 body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);background:var(--bg);line-height:1.74;-webkit-font-smoothing:antialiased}
 
 /* Cover */
-.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--navy);color:#fff;text-align:center;padding:5rem 2rem;position:relative;overflow:hidden}
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(180deg, var(--navy) 0%, var(--navy-60) 100%);color:#fff;text-align:center;padding:5rem 2rem;position:relative;overflow:hidden}
 .cover>*{position:relative;z-index:1}
 .cover-tag{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold-lt);border:1px solid rgba(138,92,20,.28);padding:.45rem 1.8rem;margin-bottom:2rem}
 .cover-line{width:40px;height:1.5px;background:var(--gold);margin:0 auto 2rem}
@@ -77,12 +77,12 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .mtoc-part-title{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;font-weight:500}
 .mtoc-items{display:grid;grid-template-columns:repeat(2,1fr);gap:.4rem 4rem}
 .mtoc-item{padding:.25rem 0;border-bottom:1px dotted var(--rule-lt)}
-.mtoc-item a{text-decoration:none;color:var(--body);font-size:.88rem;transition:color .15s}
-.mtoc-item a:hover{color:var(--navy)}
+.mtoc-item a{text-decoration:none;color:var(--body);font-size:.88rem;transition:all .2s ease}
+.mtoc-item a:hover{color:var(--navy);padding-left:.5rem;border-left:2px solid var(--gold)}
 
 /* Part Headers */
-.part-header{background:var(--navy);color:#fff;padding:2rem;margin:0 0 1rem;position:relative;overflow:hidden}
-.part-header::after{content:'';position:absolute;right:0;top:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(138,92,20,.08))}
+.part-header{background:linear-gradient(180deg, var(--navy) 0%, var(--navy-60) 100%);color:#fff;padding:2rem;margin:0 0 1rem;position:relative;overflow:hidden}
+.part-header::after{content:'';position:absolute;right:0;top:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(138,92,20,.12))}
 .part-header>*{position:relative;z-index:1}
 .part-num{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold-lt);margin-bottom:.3rem}
 .part-title{font-family:'Crimson Pro',serif;font-size:1.6rem;font-weight:700}
@@ -138,8 +138,8 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 .toc-rule,.toc-line{width:24px;height:2px;background:var(--gold);margin:0 0 1.5rem 0}
 .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.3rem 4rem}
 .toc-item{padding:.2rem 0;border-bottom:1px dotted var(--rule-lt);display:flex;align-items:baseline;gap:.6rem}
-.toc-item a{text-decoration:none;color:var(--body);font-size:.76rem;transition:color .15s}
-.toc-item a:hover{color:var(--navy)}
+.toc-item a{text-decoration:none;color:var(--body);font-size:.76rem;transition:all .2s ease}
+.toc-item a:hover{color:var(--gold)}
 .toc-num,.toc-n{font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:1px;color:var(--gold);font-weight:500;min-width:1.8rem}
 .part-toc{background:var(--surface);border:1px solid var(--rule);padding:2rem 3rem;margin-bottom:1rem;box-shadow:var(--shadow)}
 @media(max-width:768px){.toc-grid{grid-template-columns:1fr}.part-toc{padding:1rem .75rem}}
@@ -260,12 +260,28 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 .footer{text-align:center;padding:4rem 2rem;color:var(--caption);font-size:.7rem;border-top:1px solid var(--rule);margin-top:3rem}
 .footer-brand{font-family:'Crimson Pro',serif;font-size:1rem;color:var(--navy);font-weight:700;margin-bottom:.3rem}
 
+/* Progress Bar */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0%;z-index:9999;transition:width .1s linear}
+
+/* Back to Top Button */
+.back-to-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--navy);color:#fff;border:none;border-radius:50%;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s ease;z-index:9998;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.back-to-top:hover{background:var(--navy-60);transform:translateY(-2px)}
+.back-to-top.visible{opacity:1;visibility:visible}
+.back-to-top svg{width:20px;height:20px}
+
 /* Print */
 @media print{
-  .cover,.part-header{page-break-after:always}
-  .s,.tmpl-section{page-break-inside:avoid}
-  body{font-size:10px}
+  .cover{page-break-after:always;min-height:100vh}
+  .part-header{page-break-before:always;page-break-after:avoid}
+  .s,.tmpl-section{page-break-inside:avoid;margin-bottom:.5rem}
+  .part-toc{page-break-inside:avoid;page-break-after:avoid}
+  body{font-size:10px;background:#fff}
   .master-toc{page-break-after:always}
+  .doc{max-width:100%;padding:0}
+  table{page-break-inside:avoid}
+  .box,.box-gold,.box-sage,.box-sky,.box-amber,.box-coral,.box-cyan{page-break-inside:avoid}
+  .progress-bar,.back-to-top{display:none!important}
+  .legend,.appendix-legend{page-break-inside:avoid}
 }
 @media(max-width:768px){
   /* Container - no padding on mobile */
@@ -352,6 +368,16 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 </style>
 </head>
 <body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
 
 <!-- COVER -->
 <div class="cover">
@@ -5484,6 +5510,29 @@ document.querySelectorAll('table').forEach(function(table) {
     table.parentNode.insertBefore(wrapper, table);
     wrapper.appendChild(table);
   }
+});
+
+// Progress Bar
+var progressBar = document.getElementById('progressBar');
+var backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', function() {
+  // Progress Bar
+  var scrollTop = window.scrollY;
+  var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  var progress = (scrollTop / docHeight) * 100;
+  progressBar.style.width = progress + '%';
+  
+  // Back to Top Button
+  if (scrollTop > 500) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+backToTop.addEventListener('click', function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
 </body></html>
