@@ -499,6 +499,29 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 /* Progress Bar */
 .progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0%;z-index:9999;transition:width .1s linear}
 
+/* Sidebar Navigation */
+.sidebar{position:fixed;top:0;left:-280px;width:280px;height:100vh;background:var(--navy);z-index:10000;transition:left .3s ease;overflow-y:auto;box-shadow:2px 0 20px rgba(0,0,0,.3)}
+.sidebar.open{left:0}
+.sidebar-header{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.sidebar-title{font-family:'Crimson Pro',serif;font-size:1rem;font-weight:700;color:#fff}
+.sidebar-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:1.5rem;cursor:pointer;padding:0;line-height:1}
+.sidebar-close:hover{color:#fff}
+.sidebar-content{padding:.8rem 0}
+.sidebar-section{margin-bottom:.3rem}
+.sidebar-part{display:block;padding:.6rem 1.2rem;font-size:.75rem;font-weight:600;color:var(--gold-lt);text-decoration:none;transition:all .2s ease}
+.sidebar-part:hover{background:rgba(255,255,255,.05);color:#fff}
+.sidebar-items{padding:0 0 .5rem 0}
+.sidebar-items a{display:block;padding:.35rem 1.2rem .35rem 2rem;font-size:.7rem;color:rgba(255,255,255,.6);text-decoration:none;transition:all .2s ease}
+.sidebar-items a:hover{color:#fff;background:rgba(255,255,255,.05);padding-left:2.3rem}
+.sidebar-divider{height:1px;background:rgba(255,255,255,.1);margin:1rem 1.2rem}
+.sidebar-label{display:block;padding:.6rem 1.2rem;font-size:.65rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
+.sidebar-items.tools a{padding-left:1.2rem;font-size:.72rem}
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;opacity:0;visibility:hidden;transition:all .3s ease}
+.sidebar-overlay.open{opacity:1;visibility:visible}
+.sidebar-toggle{position:fixed;top:1rem;left:1rem;width:40px;height:40px;background:var(--navy);color:#fff;border:none;border-radius:8px;cursor:pointer;z-index:9998;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);transition:all .3s ease}
+.sidebar-toggle:hover{background:var(--navy-60);transform:scale(1.05)}
+.sidebar-toggle svg{width:20px;height:20px}
+
 /* Back to Top Button */
 .back-to-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--navy);color:#fff;border:none;border-radius:50%;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s ease;z-index:9998;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .back-to-top:hover{background:var(--navy-60);transform:translateY(-2px)}
@@ -607,6 +630,145 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 
 <!-- Progress Bar -->
 <div class="progress-bar" id="progressBar"></div>
+
+<!-- Sidebar Navigation -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-title">Navigation</span>
+    <button class="sidebar-close" id="sidebarClose">×</button>
+  </div>
+  <div class="sidebar-content">
+    <div class="sidebar-section">
+      <span class="sidebar-label">Interactive Tools</span>
+      <div class="sidebar-items tools">
+        <a href="#portfolioSim">📊 Portfolio Allocation</a>
+        <a href="#projectionSim">📈 10-Year Projection</a>
+        <a href="#scenarioCalc">🎯 Scenario Calculator</a>
+        <a href="#vcSim">🚀 VC Simulator</a>
+        <a href="#deploySim">📅 Deployment Pacing</a>
+      </div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">
+      <a href="#part-sf" class="sidebar-part">Part I — Strategic Foundation</a>
+      <div class="sidebar-items">
+        <a href="#sf-s1">01 · Vision and Long-Term Ambition</a>
+        <a href="#sf-s2">02 · Mission Statement</a>
+        <a href="#sf-s3">03 · Core Investment Philosophy</a>
+        <a href="#sf-s4">04 · Strategic Positioning</a>
+        <a href="#sf-s5">05 · Competitive Advantage</a>
+        <a href="#sf-s6">06 · Capital Allocation Principles</a>
+        <a href="#sf-s7">07 · Asset Allocation Framework</a>
+        <a href="#sf-s8">08 · Investment Universe</a>
+        <a href="#sf-s9">09 · Portfolio Construction</a>
+        <a href="#sf-s10">10 · Risk Philosophy</a>
+        <a href="#sf-s11">11 · Liquidity Strategy</a>
+        <a href="#sf-s12">12 · Time Horizon</a>
+        <a href="#sf-s13">13 · Geographic Strategy</a>
+        <a href="#sf-s14">14 · Sector Focus</a>
+        <a href="#sf-s15">15 · MFO Strategy</a>
+        <a href="#sf-s16">16 · Strategic Partnerships</a>
+        <a href="#sf-s17">17 · Knowledge Advantage</a>
+        <a href="#sf-s18">18 · Governance Philosophy</a>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <a href="#part-og" class="sidebar-part">Part II — Organization</a>
+      <div class="sidebar-items">
+        <a href="#og-s1">01 · Design Principles</a>
+        <a href="#og-s2">02 · Organizational Structure</a>
+        <a href="#og-s3">03 · Key Leadership Roles</a>
+        <a href="#og-s4">04 · Investment Team</a>
+        <a href="#og-s5">05 · Venture Building Team</a>
+        <a href="#og-s6">06 · AI / Data Team</a>
+        <a href="#og-s7">07 · Portfolio Operations</a>
+        <a href="#og-s8">08 · Finance & Reporting</a>
+        <a href="#og-s9">09 · Legal & Structuring</a>
+        <a href="#og-s10">10 · Family Governance</a>
+        <a href="#og-s11">11 · Investment Committee</a>
+        <a href="#og-s12">12 · Advisory Board</a>
+        <a href="#og-s13">13 · Decision Rights</a>
+        <a href="#og-s14">14 · Scalability</a>
+        <a href="#og-s15">15 · Talent Strategy</a>
+        <a href="#og-s16">16 · Compensation</a>
+        <a href="#og-s17">17 · Hiring Roadmap</a>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <a href="#part-ip" class="sidebar-part">Part III — Investment Strategy</a>
+      <div class="sidebar-items">
+        <a href="#ip-s1">01 · Portfolio Philosophy</a>
+        <a href="#ip-s2">02 · Target Returns</a>
+        <a href="#ip-s3">03 · Risk Budgeting</a>
+        <a href="#ip-s4">04 · Asset Allocation</a>
+        <a href="#ip-s5">05 · VC Portfolio Construction</a>
+        <a href="#ip-s6">06 · Fund Investment Strategy</a>
+        <a href="#ip-s7">07 · Co-Investment Strategy</a>
+        <a href="#ip-s8">08 · Public Markets Strategy</a>
+        <a href="#ip-s9">09 · Real Estate Strategy</a>
+        <a href="#ip-s10">10 · Liquidity Management</a>
+        <a href="#ip-s11">11 · Rebalancing Rules</a>
+        <a href="#ip-s12">12 · Capital Deployment</a>
+        <a href="#ip-s13">13 · Reserve Strategy</a>
+        <a href="#ip-s14">14 · Follow-On Strategy</a>
+        <a href="#ip-s15">15 · Diversification Rules</a>
+        <a href="#ip-s16">16 · Expected Outcomes</a>
+        <a href="#ip-s17">17 · Scenario Analysis</a>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <a href="#part-ai" class="sidebar-part">Part IV — AI Operating System</a>
+      <div class="sidebar-items">
+        <a href="#ai-s1">01 · AI Strategy Vision</a>
+        <a href="#ai-s2">02 · AI Tech Stack</a>
+        <a href="#ai-s3">03 · AI for Deal Sourcing</a>
+        <a href="#ai-s4">04 · AI for Due Diligence</a>
+        <a href="#ai-s5">05 · AI for Screening</a>
+        <a href="#ai-s6">06 · AI for Market Research</a>
+        <a href="#ai-s7">07 · AI for Competitive Analysis</a>
+        <a href="#ai-s8">08 · AI for Financial Modeling</a>
+        <a href="#ai-s9">09 · AI for Portfolio Monitoring</a>
+        <a href="#ai-s10">10 · AI for Risk Management</a>
+        <a href="#ai-s11">11 · AI for Reporting</a>
+        <a href="#ai-s12">12 · AI Knowledge System</a>
+        <a href="#ai-s13">13 · AI Agents Architecture</a>
+        <a href="#ai-s14">14 · Data Infrastructure</a>
+        <a href="#ai-s15">15 · Automation Opportunities</a>
+        <a href="#ai-s16">16 · Human vs AI</a>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <a href="#part-pd" class="sidebar-part">Part V — Investment Process</a>
+      <div class="sidebar-items">
+        <a href="#pd-s1">01 · Dealflow Strategy</a>
+        <a href="#pd-s2">02 · Deal Sourcing Channels</a>
+        <a href="#pd-s3">03 · Screening Framework</a>
+        <a href="#pd-s4">04 · Initial Analysis</a>
+        <a href="#pd-s5">05 · IC Process</a>
+        <a href="#pd-s6">06 · Due Diligence</a>
+        <a href="#pd-s7">07 · Investment Memo</a>
+        <a href="#pd-s8">08 · Decision-Making Rules</a>
+        <a href="#pd-s9">09 · Execution Process</a>
+        <a href="#pd-s10">10 · Legal Closing</a>
+        <a href="#pd-s11">11 · Portfolio Onboarding</a>
+        <a href="#pd-s12">12 · Portfolio Monitoring</a>
+        <a href="#pd-s13">13 · Value Creation</a>
+        <a href="#pd-s14">14 · Exit Strategy</a>
+        <a href="#pd-s15">15 · Post-Investment Governance</a>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <a href="#part-tp" class="sidebar-part">Part VI — Templates</a>
+    </div>
+    <div class="sidebar-section">
+      <a href="#part-wf" class="sidebar-part">Part VII — Operations</a>
+    </div>
+  </div>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="Open navigation">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+</button>
 
 <!-- Back to Top Button -->
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
@@ -6449,6 +6611,40 @@ function updateDeploySim() {
 }
 document.querySelectorAll('#deploySim input').forEach(function(input) {
   input.addEventListener('input', updateDeploySim);
+});
+
+// Sidebar Navigation
+var sidebar = document.getElementById('sidebar');
+var sidebarToggle = document.getElementById('sidebarToggle');
+var sidebarClose = document.getElementById('sidebarClose');
+var sidebarOverlay = document.getElementById('sidebarOverlay');
+
+function openSidebar() {
+  sidebar.classList.add('open');
+  sidebarOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  sidebarOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+sidebarToggle.addEventListener('click', openSidebar);
+sidebarClose.addEventListener('click', closeSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+// Close sidebar when clicking a link
+document.querySelectorAll('.sidebar a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    closeSidebar();
+  });
+});
+
+// Close sidebar on escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSidebar();
 });
 </script>
 </body></html>
