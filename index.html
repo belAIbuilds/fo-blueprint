@@ -84,9 +84,25 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .mtoc-item a{text-decoration:none;color:var(--body);font-size:.88rem;transition:all .2s ease}
 .mtoc-item a:hover{color:var(--navy);padding-left:.5rem;border-left:2px solid var(--gold)}
 
+/* Interactive Tools Navigation */
+.tools-nav{background:linear-gradient(135deg, var(--navy) 0%, var(--navy-60) 100%);border-radius:8px;padding:1.5rem 2rem;margin-bottom:2rem;position:relative;overflow:hidden}
+.tools-nav::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(176,120,24,0.06) 60px, rgba(176,120,24,0.06) 61px);z-index:0}
+.tools-nav>*{position:relative;z-index:1}
+.tools-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem}
+.tools-icon{width:32px;height:32px;color:var(--gold-lt)}
+.tools-header h3{font-family:'Crimson Pro',serif;font-size:1.1rem;font-weight:700;color:#fff;margin:0}
+.tools-header p{font-size:.72rem;color:rgba(255,255,255,.5);margin:.2rem 0 0}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}
+.tool-card{display:flex;flex-direction:column;gap:.2rem;padding:.8rem 1rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:6px;text-decoration:none;transition:all .2s ease}
+.tool-card:hover{background:rgba(176,120,24,.2);border-color:var(--gold);transform:translateY(-2px)}
+.tool-icon{font-size:1.2rem}
+.tool-name{font-size:.8rem;font-weight:600;color:#fff}
+.tool-desc{font-size:.65rem;color:rgba(255,255,255,.5)}
+
 /* Part Headers */
 .part-header{background:linear-gradient(180deg, var(--navy) 0%, var(--navy-60) 100%);color:#fff;padding:2.5rem 2rem;margin:0 0 1rem;position:relative;overflow:hidden;display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem}
-.part-header::after{content:'';position:absolute;right:0;top:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(138,92,20,.12))}
+.part-header::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg, transparent, transparent 100px, rgba(176,120,24,0.04) 100px, rgba(176,120,24,0.04) 101px);z-index:0}
+.part-header::after{content:'';position:absolute;right:0;top:0;width:200px;height:100%;background:linear-gradient(90deg,transparent,rgba(138,92,20,.12));z-index:0}
 .part-header>*{position:relative;z-index:1}
 .part-icon{width:48px;height:48px;background:rgba(176,120,24,0.15);border:1px solid rgba(176,120,24,0.3);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--gold-lt);flex-shrink:0}
 .part-icon svg{width:24px;height:24px}
@@ -256,6 +272,118 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 .org-pillars{display:flex;justify-content:center;gap:1rem;margin-top:0;flex-wrap:nowrap}
 .org-pillar{display:flex;flex-direction:column;align-items:center;min-width:100px}
 .org-external-row{display:flex;gap:.3rem;margin-top:.3rem}
+
+/* Simulators & Calculators */
+.simulator{background:var(--surface);border:2px solid var(--gold);padding:1.5rem;margin:1.5rem 0;border-radius:8px}
+.sim-header{margin-bottom:1rem}
+.sim-header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.sim-title{font-family:'Crimson Pro',serif;font-size:1.1rem;font-weight:700;color:var(--navy)}
+.sim-subtitle{font-size:.72rem;color:var(--caption);margin-top:.2rem}
+.sim-aum-input{display:flex;align-items:center;gap:.5rem}
+.sim-aum-input label{font-size:.7rem;color:var(--navy);font-weight:600}
+.sim-input-wrap{display:flex;align-items:center;background:var(--surface-alt);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.sim-prefix,.sim-suffix{padding:.4rem .5rem;background:var(--rule-lt);font-size:.75rem;color:var(--caption);font-family:'JetBrains Mono',monospace}
+.simulator input[type="number"]{width:60px;padding:.4rem .3rem;border:none;font-size:.85rem;font-family:'JetBrains Mono',monospace;text-align:center;background:var(--surface-alt)}
+.simulator input[type="number"]:focus{outline:2px solid var(--gold);background:#fff}
+
+/* Allocation Table Simulator */
+.alloc-table{width:100%;margin:0}
+.alloc-table th{background:var(--navy);color:#fff;font-size:.68rem;padding:.5rem .6rem;text-align:left}
+.alloc-table th:nth-child(2),.alloc-table th:nth-child(3){text-align:center}
+.alloc-table td{padding:.4rem .6rem;font-size:.78rem;border-bottom:1px solid var(--rule-lt)}
+.alloc-table td:nth-child(2){text-align:center}
+.alloc-table .pct-input{width:50px;padding:.25rem;border:1px solid var(--rule);border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:.8rem;text-align:center;background:var(--surface-alt)}
+.alloc-table .pct-input:focus{outline:none;border-color:var(--gold);background:var(--gold-bg)}
+.alloc-table .sim-val{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold);text-align:right}
+.alloc-table .total-row td{background:var(--gold-bg);font-weight:600}
+.alloc-table .total-row #totalPct.error{color:#943030}
+.alloc-summary{display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap}
+.alloc-chip{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--caption);padding:.3rem .6rem;background:var(--surface-alt);border-radius:4px}
+.alloc-chip strong{color:var(--navy)}
+.alloc-chip .chip-dot{width:8px;height:8px;border-radius:50%}
+.alloc-chip.illiq .chip-dot{background:var(--gold)}
+.alloc-chip.liq .chip-dot{background:var(--navy)}
+.alloc-chip.cash .chip-dot{background:var(--steel)}
+
+/* Projection Table Simulator */
+.proj-table{width:100%;margin:0}
+.proj-table th{background:var(--navy);color:#fff;font-size:.65rem;padding:.5rem .5rem;text-align:center}
+.proj-table th:first-child{text-align:left}
+.proj-table td{padding:.4rem .5rem;font-size:.75rem;border-bottom:1px solid var(--rule-lt);text-align:center}
+.proj-table td:first-child{text-align:left}
+.proj-table .irr-input{width:45px;padding:.25rem;border:1px solid var(--rule);border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:.78rem;text-align:center;background:var(--surface-alt)}
+.proj-table .irr-input:focus{outline:none;border-color:var(--gold);background:var(--gold-bg)}
+.proj-table .proj-cap{font-family:'JetBrains Mono',monospace;color:var(--caption)}
+.proj-table .proj-moic{font-family:'JetBrains Mono',monospace;color:var(--navy)}
+.proj-table .proj-val{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold)}
+.proj-table .total-row td{background:var(--gold-bg)}
+
+/* Scenario Probability Calculator */
+.prob-inputs{display:flex;flex-direction:column;gap:.6rem}
+.prob-row{display:grid;grid-template-columns:100px 1fr 50px;gap:.8rem;align-items:center}
+.prob-label{font-size:.75rem;font-weight:600;padding:.2rem .5rem;border-radius:3px;color:#fff}
+.prob-label.bull{background:var(--gold)}
+.prob-label.base{background:var(--navy)}
+.prob-label.mild{background:var(--navy-60)}
+.prob-label.severe{background:var(--steel)}
+.prob-label.swan{background:#943030}
+.prob-slider{width:100%;height:6px;-webkit-appearance:none;background:var(--rule-lt);border-radius:3px;cursor:pointer}
+.prob-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--gold);border-radius:50%;cursor:pointer}
+.prob-value{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:600;color:var(--navy);text-align:right}
+.prob-total-row{display:flex;justify-content:space-between;margin-top:.8rem;padding-top:.8rem;border-top:1px dashed var(--rule)}
+.prob-total-label{font-size:.72rem;color:var(--caption)}
+.prob-total{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:700;color:var(--navy)}
+.prob-total.error{color:#943030}
+.prob-results{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem;padding:1rem;background:var(--gold-bg);border-radius:6px}
+.prob-result{text-align:center}
+.prob-result-label{font-size:.65rem;color:var(--caption);display:block;margin-bottom:.2rem}
+.prob-result-value{font-family:'Crimson Pro',serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+
+/* VC Portfolio Simulator */
+.vc-inputs{margin-bottom:1rem}
+.vc-input-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem}
+.vc-input-group{display:flex;flex-direction:column;gap:.3rem;background:var(--surface-alt);padding:.8rem;border-radius:6px}
+.vc-input-group label{font-size:.7rem;color:var(--navy);font-weight:600}
+.vc-input-group input{padding:.5rem;border:1px solid var(--rule);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:.9rem;text-align:center;background:#fff}
+.vc-input-group input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.input-hint{font-size:.6rem;color:var(--caption);font-style:italic}
+.vc-results{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:.8rem}
+.vc-result{background:var(--surface-alt);padding:.7rem;text-align:center;border-radius:4px}
+.vc-result.highlight{background:var(--gold);color:#fff}
+.vc-result.highlight .vc-result-label{color:rgba(255,255,255,.7)}
+.vc-result.highlight .vc-result-value{color:#fff}
+.vc-result-label{font-size:.58rem;color:var(--caption);display:block;text-transform:uppercase;letter-spacing:.3px;line-height:1.3}
+.vc-result-value{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:700;color:var(--navy)}
+.vc-legend{display:flex;gap:1.5rem;margin-bottom:.5rem;justify-content:center}
+.vc-legend-item{font-size:.7rem;color:var(--caption);display:flex;align-items:center;gap:.4rem}
+.vc-legend-item .dot{width:10px;height:10px;border-radius:2px}
+.vc-legend-item .dot.failures{background:#943030}
+.vc-legend-item .dot.mediocre{background:var(--steel)}
+.vc-legend-item .dot.winners{background:var(--gold)}
+.vc-breakdown{margin-top:.5rem}
+.vc-bar{display:flex;height:32px;border-radius:4px;overflow:hidden}
+.vc-bar-segment{display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:#fff;transition:width .3s ease}
+.vc-bar-segment.failures{background:#943030}
+.vc-bar-segment.mediocre{background:var(--steel)}
+.vc-bar-segment.winners{background:var(--gold)}
+
+/* Deployment Pacing Calculator */
+.deploy-inputs{margin-bottom:1rem}
+.deploy-input-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.deploy-input-group{display:flex;flex-direction:column;gap:.3rem;background:var(--surface-alt);padding:.8rem;border-radius:6px}
+.deploy-input-group label{font-size:.7rem;color:var(--navy);font-weight:600}
+.deploy-input-group input{padding:.5rem;border:1px solid var(--rule);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:.9rem;text-align:center;background:#fff}
+.deploy-input-group input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.deploy-results{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1rem}
+.deploy-result{background:var(--surface-alt);padding:.7rem;text-align:center;border-radius:4px}
+.deploy-result-label{font-size:.6rem;color:var(--caption);display:block;text-transform:uppercase;letter-spacing:.5px}
+.deploy-result-value{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--navy)}
+.deploy-schedule{display:flex;flex-direction:column;gap:.4rem}
+.deploy-year{display:grid;grid-template-columns:30px 1fr 60px;gap:.6rem;align-items:center}
+.deploy-year-label{font-size:.7rem;font-weight:600;color:var(--navy)}
+.deploy-year-bar{height:20px;background:linear-gradient(90deg,var(--gold) 0%,var(--gold-lt) 100%);border-radius:3px;transition:width .3s ease}
+.deploy-year-value{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--navy);text-align:right}
+.deploy-note{font-size:.7rem;color:var(--caption);font-style:italic;margin-top:.8rem;text-align:center}
 
 /* Dashboards */
 .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin:1rem 0}
@@ -672,6 +800,44 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 
 </div>
 
+<!-- INTERACTIVE TOOLS NAVIGATION -->
+<div class="tools-nav">
+  <div class="tools-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="tools-icon"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <div>
+      <h3>Interactive Calculators & Simulators</h3>
+      <p>Model scenarios, adjust assumptions, and explore portfolio dynamics</p>
+    </div>
+  </div>
+  <div class="tools-grid">
+    <a href="#portfolioSim" class="tool-card">
+      <span class="tool-icon">📊</span>
+      <span class="tool-name">Portfolio Allocation</span>
+      <span class="tool-desc">Adjust AUM & target allocations</span>
+    </a>
+    <a href="#projectionSim" class="tool-card">
+      <span class="tool-icon">📈</span>
+      <span class="tool-name">10-Year Projection</span>
+      <span class="tool-desc">Model IRR assumptions & terminal value</span>
+    </a>
+    <a href="#scenarioCalc" class="tool-card">
+      <span class="tool-icon">🎯</span>
+      <span class="tool-name">Scenario Calculator</span>
+      <span class="tool-desc">Adjust probability weights</span>
+    </a>
+    <a href="#vcSim" class="tool-card">
+      <span class="tool-icon">🚀</span>
+      <span class="tool-name">VC Portfolio Simulator</span>
+      <span class="tool-desc">Model power-law returns</span>
+    </a>
+    <a href="#deploySim" class="tool-card">
+      <span class="tool-icon">📅</span>
+      <span class="tool-name">Deployment Pacing</span>
+      <span class="tool-desc">Plan capital deployment schedule</span>
+    </a>
+  </div>
+</div>
+
 <!-- ALL PARTS -->
 
 <div class="part-header" id="part-sf">
@@ -1019,6 +1185,46 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
       <div class="legend-row" data-seg="7"><span class="legend-color" style="background:#3d465a"></span><span class="legend-label">ETFs / Index</span><span class="legend-value">10%</span></div>
       <div class="legend-row" data-seg="8"><span class="legend-color" style="background:#6a6f84"></span><span class="legend-label">Real Estate</span><span class="legend-value">7%</span></div>
       <div class="legend-row" data-seg="9"><span class="legend-color" style="background:#9da2b5"></span><span class="legend-label">Cash / Treasuries</span><span class="legend-value">3%</span></div>
+    </div>
+  </div>
+  
+  <!-- Portfolio Allocation Simulator -->
+  <div class="simulator" id="portfolioSim">
+    <div class="sim-header-row">
+      <div>
+        <div class="sim-title">Portfolio Allocation Simulator</div>
+        <div class="sim-subtitle">Adjust AUM and allocations to model scenarios</div>
+      </div>
+      <div class="sim-aum-input">
+        <label>AUM</label>
+        <div class="sim-input-wrap">
+          <span class="sim-prefix">€</span>
+          <input type="number" id="aumInput" value="100" min="10" max="1000" step="10">
+          <span class="sim-suffix">M</span>
+        </div>
+      </div>
+    </div>
+    <table class="alloc-table" id="aumResults">
+      <thead>
+        <tr><th>Asset Class</th><th>Target %</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>VC Direct</td><td><input type="number" class="pct-input" value="25" min="0" max="100"></td><td class="sim-val">€25.0M</td></tr>
+        <tr><td>VC Funds (LP)</td><td><input type="number" class="pct-input" value="10" min="0" max="100"></td><td class="sim-val">€10.0M</td></tr>
+        <tr><td>Co-Investments</td><td><input type="number" class="pct-input" value="8" min="0" max="100"></td><td class="sim-val">€8.0M</td></tr>
+        <tr><td>Private Equity</td><td><input type="number" class="pct-input" value="10" min="0" max="100"></td><td class="sim-val">€10.0M</td></tr>
+        <tr><td>Venture Building</td><td><input type="number" class="pct-input" value="7" min="0" max="100"></td><td class="sim-val">€7.0M</td></tr>
+        <tr><td>Public Equities</td><td><input type="number" class="pct-input" value="20" min="0" max="100"></td><td class="sim-val">€20.0M</td></tr>
+        <tr><td>ETFs / Index</td><td><input type="number" class="pct-input" value="10" min="0" max="100"></td><td class="sim-val">€10.0M</td></tr>
+        <tr><td>Real Estate</td><td><input type="number" class="pct-input" value="7" min="0" max="100"></td><td class="sim-val">€7.0M</td></tr>
+        <tr><td>Cash / Treasuries</td><td><input type="number" class="pct-input" value="3" min="0" max="100"></td><td class="sim-val">€3.0M</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td><strong id="totalPct">100%</strong></td><td class="sim-val"><strong id="totalAmt">€100.0M</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="alloc-summary">
+      <span class="alloc-chip illiq"><span class="chip-dot"></span>Illiquid <strong id="sumIlliquid">60%</strong></span>
+      <span class="alloc-chip liq"><span class="chip-dot"></span>Liquid <strong id="sumLiquid">30%</strong></span>
+      <span class="alloc-chip cash"><span class="chip-dot"></span>Cash/RE <strong id="sumCash">10%</strong></span>
     </div>
   </div>
   
@@ -2856,6 +3062,72 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 
   <p>The capital deployment strategy defines the pace, sequence, and prioritization of capital deployment across asset classes over the initial 5-year ramp period. Disciplined pacing ensures vintage year diversification, prevents deployment pressure (the behavioral bias to invest because capital is available), and preserves dry powder for market dislocations.</p>
 
+  <!-- Deployment Pacing Calculator -->
+  <div class="simulator" id="deploySim">
+    <div class="sim-header">
+      <div class="sim-title">Deployment Pacing Calculator</div>
+      <div class="sim-subtitle">Model your capital deployment over time</div>
+    </div>
+    <div class="deploy-inputs">
+      <div class="deploy-input-row">
+        <div class="deploy-input-group">
+          <label>Starting AUM (€M)</label>
+          <input type="number" id="deployAum" value="100" min="20" max="500" step="10">
+        </div>
+        <div class="deploy-input-group">
+          <label>Illiquid Target (%)</label>
+          <input type="number" id="deployTarget" value="60" min="30" max="80">
+        </div>
+        <div class="deploy-input-group">
+          <label>Ramp Years</label>
+          <input type="number" id="deployYears" value="5" min="3" max="10">
+        </div>
+      </div>
+    </div>
+    <div class="deploy-results">
+      <div class="deploy-result">
+        <span class="deploy-result-label">Total to Deploy</span>
+        <span class="deploy-result-value" id="deployTotal">€60M</span>
+      </div>
+      <div class="deploy-result">
+        <span class="deploy-result-label">Avg per Year</span>
+        <span class="deploy-result-value" id="deployAvg">€12M</span>
+      </div>
+      <div class="deploy-result">
+        <span class="deploy-result-label">Avg per Quarter</span>
+        <span class="deploy-result-value" id="deployQtr">€3M</span>
+      </div>
+    </div>
+    <div class="deploy-schedule" id="deploySchedule">
+      <div class="deploy-year">
+        <span class="deploy-year-label">Y1</span>
+        <div class="deploy-year-bar" style="width:50%"></div>
+        <span class="deploy-year-value">€6M</span>
+      </div>
+      <div class="deploy-year">
+        <span class="deploy-year-label">Y2</span>
+        <div class="deploy-year-bar" style="width:80%"></div>
+        <span class="deploy-year-value">€9.6M</span>
+      </div>
+      <div class="deploy-year">
+        <span class="deploy-year-label">Y3</span>
+        <div class="deploy-year-bar" style="width:100%"></div>
+        <span class="deploy-year-value">€12M</span>
+      </div>
+      <div class="deploy-year">
+        <span class="deploy-year-label">Y4</span>
+        <div class="deploy-year-bar" style="width:100%"></div>
+        <span class="deploy-year-value">€12M</span>
+      </div>
+      <div class="deploy-year">
+        <span class="deploy-year-label">Y5</span>
+        <div class="deploy-year-bar" style="width:100%"></div>
+        <span class="deploy-year-value">€12M</span>
+      </div>
+    </div>
+    <div class="deploy-note">Recommended: Ramp up gradually in Years 1-2 as team and processes mature</div>
+  </div>
+
   <h3>5-Year Capital Deployment Schedule</h3>
   <table>
     <thead><tr><th>Asset Class</th><th>Year 1 (€M)</th><th>Year 2 (€M)</th><th>Year 3 (€M)</th><th>Year 4 (€M)</th><th>Year 5 (€M)</th><th>Cumulative (€M)</th></tr></thead>
@@ -2968,6 +3240,68 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
     </ul>
   </div>
 
+  <!-- VC Portfolio Simulator -->
+  <div class="simulator" id="vcSim">
+    <div class="sim-header">
+      <div class="sim-title">VC Portfolio Return Simulator</div>
+      <div class="sim-subtitle">Model power-law returns based on portfolio construction parameters</div>
+    </div>
+    <div class="vc-inputs">
+      <div class="vc-input-row">
+        <div class="vc-input-group">
+          <label>Number of Deals</label>
+          <input type="number" id="vcDeals" value="30" min="5" max="100">
+          <span class="input-hint">Portfolio companies</span>
+        </div>
+        <div class="vc-input-group">
+          <label>Avg Ticket (€K)</label>
+          <input type="number" id="vcTicket" value="500" min="100" max="2000" step="50">
+          <span class="input-hint">Initial check size</span>
+        </div>
+        <div class="vc-input-group">
+          <label>Loss Rate (%)</label>
+          <input type="number" id="vcLoss" value="35" min="10" max="60">
+          <span class="input-hint">Write-offs to zero</span>
+        </div>
+        <div class="vc-input-group">
+          <label>Top Winner MOIC</label>
+          <input type="number" id="vcWinner" value="10" min="3" max="50" step="1">
+          <span class="input-hint">Best outcome multiple</span>
+        </div>
+      </div>
+    </div>
+    <div class="vc-results">
+      <div class="vc-result">
+        <span class="vc-result-label">Total Capital Deployed</span>
+        <span class="vc-result-value" id="vcDeployed">€15M</span>
+      </div>
+      <div class="vc-result">
+        <span class="vc-result-label">Expected Write-Offs</span>
+        <span class="vc-result-value" id="vcFailures">10.5 deals</span>
+      </div>
+      <div class="vc-result">
+        <span class="vc-result-label">10x+ Exits Needed for 3x Fund</span>
+        <span class="vc-result-value" id="vcWinnersNeeded">4.5 deals</span>
+      </div>
+      <div class="vc-result highlight">
+        <span class="vc-result-label">Projected Portfolio Return</span>
+        <span class="vc-result-value" id="vcMoic">3.2x</span>
+      </div>
+    </div>
+    <div class="vc-legend">
+      <span class="vc-legend-item"><span class="dot failures"></span> Write-offs (0x)</span>
+      <span class="vc-legend-item"><span class="dot mediocre"></span> Base hits (1-3x)</span>
+      <span class="vc-legend-item"><span class="dot winners"></span> Winners (10x+)</span>
+    </div>
+    <div class="vc-breakdown" id="vcBreakdown">
+      <div class="vc-bar">
+        <div class="vc-bar-segment failures" style="width:35%"><span>35%</span></div>
+        <div class="vc-bar-segment mediocre" style="width:40%"><span>40%</span></div>
+        <div class="vc-bar-segment winners" style="width:25%"><span>25%</span></div>
+      </div>
+    </div>
+  </div>
+
   <h3>Diversification Matrix</h3>
   <table>
     <thead><tr><th>Dimension</th><th>Limit</th><th>Rationale</th><th>Monitoring</th></tr></thead>
@@ -2996,27 +3330,47 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
   <p>This section models expected portfolio outcomes at the 10-year horizon under base-case assumptions. All returns are gross of family-level taxes but net of fund-level fees and carry where applicable.</p>
 
   <h3>10-Year Portfolio Projection (Base Case)</h3>
-  <table>
-    <thead><tr><th>Asset Class</th><th>Initial Capital (€M)</th><th>Gross IRR</th><th>10-Yr MOIC</th><th>Projected Value (€M)</th><th>% of Terminal Value</th></tr></thead>
-    <tbody>
-      <tr><td><strong>VC Direct</strong></td><td class="num">25.0</td><td class="num">27%</td><td class="num">4.5x</td><td class="num">112.5</td><td class="num">33%</td></tr>
-      <tr><td><strong>VC Funds</strong></td><td class="num">10.0</td><td class="num">18%</td><td class="num">2.2x</td><td class="num">22.0</td><td class="num">7%</td></tr>
-      <tr><td><strong>Co-Investments</strong></td><td class="num">8.0</td><td class="num">22%</td><td class="num">3.0x</td><td class="num">24.0</td><td class="num">7%</td></tr>
-      <tr><td><strong>Private Equity</strong></td><td class="num">10.0</td><td class="num">17%</td><td class="num">2.0x</td><td class="num">20.0</td><td class="num">6%</td></tr>
-      <tr><td><strong>Venture Building</strong></td><td class="num">7.0</td><td class="num">30%</td><td class="num">5.0x</td><td class="num">35.0</td><td class="num">10%</td></tr>
-      <tr><td><strong>Public Equities</strong></td><td class="num">20.0</td><td class="num">13%</td><td class="num">3.4x</td><td class="num">68.0</td><td class="num">20%</td></tr>
-      <tr><td><strong>ETFs / Index</strong></td><td class="num">10.0</td><td class="num">9%</td><td class="num">2.4x</td><td class="num">24.0</td><td class="num">7%</td></tr>
-      <tr><td><strong>Real Estate</strong></td><td class="num">7.0</td><td class="num">7%</td><td class="num">2.0x</td><td class="num">14.0</td><td class="num">4%</td></tr>
-      <tr><td><strong>Cash (avg balance)</strong></td><td class="num">3.0</td><td class="num">3%</td><td class="num">1.3x</td><td class="num">4.0</td><td class="num">1%</td></tr>
-      <tr><td class="highlight"><strong>Total Portfolio</strong></td><td class="highlight num">100.0</td><td class="highlight num">~16%</td><td class="highlight num">3.2x</td><td class="highlight num">323.5</td><td class="highlight num">100%</td></tr>
-    </tbody>
-  </table>
+  
+  <!-- 10-Year Projection Calculator -->
+  <div class="simulator" id="projectionSim">
+    <div class="sim-header-row">
+      <div>
+        <div class="sim-title">10-Year Projection Calculator</div>
+        <div class="sim-subtitle">Adjust IRR assumptions to model different return scenarios</div>
+      </div>
+      <div class="sim-aum-input">
+        <label>Starting AUM</label>
+        <div class="sim-input-wrap">
+          <span class="sim-prefix">€</span>
+          <input type="number" id="projAum" value="100" min="10" max="500" step="10">
+          <span class="sim-suffix">M</span>
+        </div>
+      </div>
+    </div>
+    <table class="proj-table" id="projResults">
+      <thead>
+        <tr><th>Asset Class</th><th>Allocation</th><th>Capital</th><th>IRR %</th><th>10Y MOIC</th><th>Terminal Value</th></tr>
+      </thead>
+      <tbody>
+        <tr data-alloc="25"><td>VC Direct</td><td>25%</td><td class="proj-cap">€25M</td><td><input type="number" class="irr-input" value="27" min="0" max="50"></td><td class="proj-moic">4.5x</td><td class="proj-val">€112.5M</td></tr>
+        <tr data-alloc="10"><td>VC Funds</td><td>10%</td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="18" min="0" max="50"></td><td class="proj-moic">2.2x</td><td class="proj-val">€22.0M</td></tr>
+        <tr data-alloc="8"><td>Co-Investments</td><td>8%</td><td class="proj-cap">€8M</td><td><input type="number" class="irr-input" value="22" min="0" max="50"></td><td class="proj-moic">3.0x</td><td class="proj-val">€24.0M</td></tr>
+        <tr data-alloc="10"><td>Private Equity</td><td>10%</td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="17" min="0" max="50"></td><td class="proj-moic">2.0x</td><td class="proj-val">€20.0M</td></tr>
+        <tr data-alloc="7"><td>Venture Building</td><td>7%</td><td class="proj-cap">€7M</td><td><input type="number" class="irr-input" value="30" min="0" max="50"></td><td class="proj-moic">5.0x</td><td class="proj-val">€35.0M</td></tr>
+        <tr data-alloc="20"><td>Public Equities</td><td>20%</td><td class="proj-cap">€20M</td><td><input type="number" class="irr-input" value="13" min="0" max="50"></td><td class="proj-moic">3.4x</td><td class="proj-val">€68.0M</td></tr>
+        <tr data-alloc="10"><td>ETFs / Index</td><td>10%</td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="9" min="0" max="50"></td><td class="proj-moic">2.4x</td><td class="proj-val">€24.0M</td></tr>
+        <tr data-alloc="7"><td>Real Estate</td><td>7%</td><td class="proj-cap">€7M</td><td><input type="number" class="irr-input" value="7" min="0" max="50"></td><td class="proj-moic">2.0x</td><td class="proj-val">€14.0M</td></tr>
+        <tr data-alloc="3"><td>Cash</td><td>3%</td><td class="proj-cap">€3M</td><td><input type="number" class="irr-input" value="3" min="0" max="50"></td><td class="proj-moic">1.3x</td><td class="proj-val">€4.0M</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td>100%</td><td class="proj-cap"><strong id="projTotalCap">€100M</strong></td><td><strong id="projBlendedIrr">~16%</strong></td><td><strong id="projTotalMoic">3.2x</strong></td><td class="proj-val"><strong id="projTotalVal">€323.5M</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="kpi-row">
-    <div class="kpi"><div class="kpi-v">€323M</div><div class="kpi-l">10-Year Terminal Value</div></div>
-    <div class="kpi"><div class="kpi-v">3.2x</div><div class="kpi-l">Portfolio MOIC</div></div>
-    <div class="kpi"><div class="kpi-v">~16%</div><div class="kpi-l">Blended IRR</div></div>
-    <div class="kpi"><div class="kpi-v">€223M</div><div class="kpi-l">Net Value Created</div></div>
+    <div class="kpi"><div class="kpi-v" id="kpiTerminal">€323M</div><div class="kpi-l">10-Year Terminal Value</div></div>
+    <div class="kpi"><div class="kpi-v" id="kpiMoic">3.2x</div><div class="kpi-l">Portfolio MOIC</div></div>
+    <div class="kpi"><div class="kpi-v" id="kpiIrr">~16%</div><div class="kpi-l">Blended IRR</div></div>
+    <div class="kpi"><div class="kpi-v" id="kpiCreated">€223M</div><div class="kpi-l">Net Value Created</div></div>
   </div>
 
   <h3>Value Creation Attribution</h3>
@@ -3085,6 +3439,59 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
     <div class="scenario-expected">
       <span class="expected-label">Probability-Weighted Expected Value:</span>
       <span class="expected-value">2.8–3.3x MOIC</span>
+    </div>
+  </div>
+  
+  <!-- Scenario Probability Calculator -->
+  <div class="simulator" id="scenarioCalc">
+    <div class="sim-header">
+      <div class="sim-title">Scenario Probability Calculator</div>
+      <div class="sim-subtitle">Adjust probabilities to see expected portfolio outcomes</div>
+    </div>
+    <div class="prob-inputs">
+      <div class="prob-row">
+        <span class="prob-label bull">Bull Case</span>
+        <input type="range" class="prob-slider" id="probBull" min="0" max="100" value="20" data-moic="5" data-irr="25">
+        <span class="prob-value" id="probBullVal">20%</span>
+      </div>
+      <div class="prob-row">
+        <span class="prob-label base">Base Case</span>
+        <input type="range" class="prob-slider" id="probBase" min="0" max="100" value="40" data-moic="3.25" data-irr="16.5">
+        <span class="prob-value" id="probBaseVal">40%</span>
+      </div>
+      <div class="prob-row">
+        <span class="prob-label mild">Mild Stress</span>
+        <input type="range" class="prob-slider" id="probMild" min="0" max="100" value="25" data-moic="2.25" data-irr="10.5">
+        <span class="prob-value" id="probMildVal">25%</span>
+      </div>
+      <div class="prob-row">
+        <span class="prob-label severe">Severe Stress</span>
+        <input type="range" class="prob-slider" id="probSevere" min="0" max="100" value="10" data-moic="1.5" data-irr="4.5">
+        <span class="prob-value" id="probSevereVal">10%</span>
+      </div>
+      <div class="prob-row">
+        <span class="prob-label swan">Black Swan</span>
+        <input type="range" class="prob-slider" id="probSwan" min="0" max="100" value="5" data-moic="0.95" data-irr="-0.5">
+        <span class="prob-value" id="probSwanVal">5%</span>
+      </div>
+    </div>
+    <div class="prob-total-row">
+      <span class="prob-total-label">Total Probability:</span>
+      <span class="prob-total" id="probTotal">100%</span>
+    </div>
+    <div class="prob-results">
+      <div class="prob-result">
+        <span class="prob-result-label">Expected MOIC</span>
+        <span class="prob-result-value" id="expectedMoic">2.97x</span>
+      </div>
+      <div class="prob-result">
+        <span class="prob-result-label">Expected IRR</span>
+        <span class="prob-result-value" id="expectedIrr">15.5%</span>
+      </div>
+      <div class="prob-result">
+        <span class="prob-result-label">Terminal Value (€100M start)</span>
+        <span class="prob-result-value" id="expectedValue">€297M</span>
+      </div>
     </div>
   </div>
   
@@ -5841,6 +6248,207 @@ document.querySelectorAll('.scenario-btn').forEach(function(btn) {
     var labels = { moic: 'MOIC', irr: 'IRR', value: 'Terminal Value' };
     document.querySelector('.scenario-metric-label').textContent = 'Portfolio ' + labels[metric] + ' by Scenario';
   });
+});
+
+// Portfolio Allocation Simulator
+function updatePortfolioSim() {
+  var aum = parseFloat(document.getElementById('aumInput').value) || 100;
+  var rows = document.querySelectorAll('#aumResults tbody tr:not(.total-row)');
+  var total = 0;
+  
+  rows.forEach(function(row) {
+    var input = row.querySelector('.pct-input');
+    var pct = parseFloat(input.value) || 0;
+    total += pct;
+    var valCell = row.querySelector('.sim-val');
+    valCell.textContent = '€' + (aum * pct / 100).toFixed(1) + 'M';
+  });
+  
+  // Update totals
+  var totalEl = document.getElementById('totalPct');
+  totalEl.textContent = total + '%';
+  totalEl.className = total === 100 ? '' : 'error';
+  document.getElementById('totalAmt').textContent = '€' + aum.toFixed(1) + 'M';
+  
+  // Update donut center
+  var centerVal = document.querySelector('.donut-center-value');
+  if (centerVal) centerVal.textContent = '€' + aum + 'M';
+  
+  // Calculate summaries
+  var vals = [];
+  rows.forEach(function(row) { 
+    vals.push(parseFloat(row.querySelector('.pct-input').value) || 0); 
+  });
+  var illiquid = vals[0] + vals[1] + vals[2] + vals[3] + vals[4];
+  var liquid = vals[5] + vals[6];
+  var cash = vals[7] + vals[8];
+  
+  document.getElementById('sumIlliquid').textContent = illiquid + '%';
+  document.getElementById('sumLiquid').textContent = liquid + '%';
+  document.getElementById('sumCash').textContent = cash + '%';
+}
+
+var aumInput = document.getElementById('aumInput');
+if (aumInput) {
+  aumInput.addEventListener('input', updatePortfolioSim);
+  document.querySelectorAll('#aumResults .pct-input').forEach(function(input) {
+    input.addEventListener('input', updatePortfolioSim);
+  });
+}
+
+// 10-Year Projection Calculator
+function updateProjectionSim() {
+  var aum = parseFloat(document.getElementById('projAum').value) || 100;
+  var rows = document.querySelectorAll('#projResults tbody tr:not(.total-row)');
+  var totalCap = 0;
+  var totalVal = 0;
+  var weightedIrr = 0;
+  
+  rows.forEach(function(row) {
+    var alloc = parseFloat(row.getAttribute('data-alloc')) || 0;
+    var irr = parseFloat(row.querySelector('.irr-input').value) || 0;
+    var cap = aum * alloc / 100;
+    var moic = Math.pow(1 + irr/100, 10);
+    var val = cap * moic;
+    
+    totalCap += cap;
+    totalVal += val;
+    weightedIrr += (alloc/100) * irr;
+    
+    row.querySelector('.proj-cap').textContent = '€' + cap.toFixed(0) + 'M';
+    row.querySelector('.proj-moic').textContent = moic.toFixed(1) + 'x';
+    row.querySelector('.proj-val').textContent = '€' + val.toFixed(1) + 'M';
+  });
+  
+  var totalMoic = totalVal / totalCap;
+  
+  document.getElementById('projTotalCap').textContent = '€' + totalCap.toFixed(0) + 'M';
+  document.getElementById('projBlendedIrr').textContent = '~' + weightedIrr.toFixed(0) + '%';
+  document.getElementById('projTotalMoic').textContent = totalMoic.toFixed(1) + 'x';
+  document.getElementById('projTotalVal').textContent = '€' + totalVal.toFixed(1) + 'M';
+  
+  // Update KPIs
+  document.getElementById('kpiTerminal').textContent = '€' + Math.round(totalVal) + 'M';
+  document.getElementById('kpiMoic').textContent = totalMoic.toFixed(1) + 'x';
+  document.getElementById('kpiIrr').textContent = '~' + weightedIrr.toFixed(0) + '%';
+  document.getElementById('kpiCreated').textContent = '€' + Math.round(totalVal - totalCap) + 'M';
+}
+
+var projAum = document.getElementById('projAum');
+if (projAum) {
+  projAum.addEventListener('input', updateProjectionSim);
+  document.querySelectorAll('#projResults .irr-input').forEach(function(input) {
+    input.addEventListener('input', updateProjectionSim);
+  });
+}
+
+// Scenario Probability Calculator
+var probSliders = document.querySelectorAll('.prob-slider');
+function updateProbCalc() {
+  var probs = {
+    bull: parseFloat(document.getElementById('probBull').value),
+    base: parseFloat(document.getElementById('probBase').value),
+    mild: parseFloat(document.getElementById('probMild').value),
+    severe: parseFloat(document.getElementById('probSevere').value),
+    swan: parseFloat(document.getElementById('probSwan').value)
+  };
+  var moics = { bull: 5, base: 3.25, mild: 2.25, severe: 1.5, swan: 0.95 };
+  var irrs = { bull: 25, base: 16.5, mild: 10.5, severe: 4.5, swan: -0.5 };
+  
+  var total = probs.bull + probs.base + probs.mild + probs.severe + probs.swan;
+  document.getElementById('probBullVal').textContent = probs.bull + '%';
+  document.getElementById('probBaseVal').textContent = probs.base + '%';
+  document.getElementById('probMildVal').textContent = probs.mild + '%';
+  document.getElementById('probSevereVal').textContent = probs.severe + '%';
+  document.getElementById('probSwanVal').textContent = probs.swan + '%';
+  
+  var totalEl = document.getElementById('probTotal');
+  totalEl.textContent = total + '%';
+  totalEl.className = total === 100 ? 'prob-total' : 'prob-total error';
+  
+  if (total > 0) {
+    var expMoic = (probs.bull * moics.bull + probs.base * moics.base + probs.mild * moics.mild + probs.severe * moics.severe + probs.swan * moics.swan) / total;
+    var expIrr = (probs.bull * irrs.bull + probs.base * irrs.base + probs.mild * irrs.mild + probs.severe * irrs.severe + probs.swan * irrs.swan) / total;
+    document.getElementById('expectedMoic').textContent = expMoic.toFixed(2) + 'x';
+    document.getElementById('expectedIrr').textContent = expIrr.toFixed(1) + '%';
+    document.getElementById('expectedValue').textContent = '€' + Math.round(expMoic * 100) + 'M';
+  }
+}
+probSliders.forEach(function(slider) {
+  slider.addEventListener('input', updateProbCalc);
+});
+
+// VC Portfolio Simulator
+function updateVcSim() {
+  var deals = parseFloat(document.getElementById('vcDeals').value) || 30;
+  var ticket = parseFloat(document.getElementById('vcTicket').value) || 500;
+  var lossRate = parseFloat(document.getElementById('vcLoss').value) || 35;
+  var winnerMoic = parseFloat(document.getElementById('vcWinner').value) || 10;
+  
+  var deployed = deals * ticket / 1000;
+  var failures = deals * lossRate / 100;
+  var survivors = deals - failures;
+  var mediocre = survivors * 0.6;
+  var winners = survivors * 0.4;
+  
+  // Simplified power law: losers=0, mediocre=2x avg, winners=winnerMoic
+  var totalReturn = (mediocre * ticket * 2 + winners * ticket * winnerMoic) / 1000;
+  var moic = totalReturn / deployed;
+  var winnersFor3x = (3 * deployed - mediocre * ticket * 2 / 1000) / (ticket * winnerMoic / 1000);
+  
+  document.getElementById('vcDeployed').textContent = '€' + deployed.toFixed(1) + 'M';
+  document.getElementById('vcFailures').textContent = failures.toFixed(0) + ' deals';
+  document.getElementById('vcWinnersNeeded').textContent = Math.max(0, winnersFor3x).toFixed(1) + ' deals';
+  document.getElementById('vcMoic').textContent = moic.toFixed(1) + 'x';
+  
+  // Update bar with percentages
+  var failPct = lossRate;
+  var medPct = (100 - lossRate) * 0.6;
+  var winPct = (100 - lossRate) * 0.4;
+  var failBar = document.querySelector('.vc-bar-segment.failures');
+  var medBar = document.querySelector('.vc-bar-segment.mediocre');
+  var winBar = document.querySelector('.vc-bar-segment.winners');
+  failBar.style.width = failPct + '%';
+  failBar.innerHTML = '<span>' + Math.round(failPct) + '%</span>';
+  medBar.style.width = medPct + '%';
+  medBar.innerHTML = '<span>' + Math.round(medPct) + '%</span>';
+  winBar.style.width = winPct + '%';
+  winBar.innerHTML = '<span>' + Math.round(winPct) + '%</span>';
+}
+document.querySelectorAll('#vcSim input').forEach(function(input) {
+  input.addEventListener('input', updateVcSim);
+});
+
+// Deployment Pacing Calculator
+function updateDeploySim() {
+  var aum = parseFloat(document.getElementById('deployAum').value) || 100;
+  var target = parseFloat(document.getElementById('deployTarget').value) || 60;
+  var years = parseInt(document.getElementById('deployYears').value) || 5;
+  
+  var totalDeploy = aum * target / 100;
+  var avgYear = totalDeploy / years;
+  var avgQtr = avgYear / 4;
+  
+  document.getElementById('deployTotal').textContent = '€' + totalDeploy.toFixed(0) + 'M';
+  document.getElementById('deployAvg').textContent = '€' + avgYear.toFixed(1) + 'M';
+  document.getElementById('deployQtr').textContent = '€' + avgQtr.toFixed(1) + 'M';
+  
+  // Update bars with ramp-up curve
+  var schedule = document.getElementById('deploySchedule');
+  schedule.innerHTML = '';
+  var ramp = [0.5, 0.8, 1, 1, 1, 1, 1, 1, 1, 1];
+  for (var i = 0; i < years; i++) {
+    var yearDeploy = avgYear * ramp[i];
+    var pct = (ramp[i] * 100);
+    schedule.innerHTML += '<div class="deploy-year">' +
+      '<span class="deploy-year-label">Y' + (i+1) + '</span>' +
+      '<div class="deploy-year-bar" style="width:' + pct + '%"></div>' +
+      '<span class="deploy-year-value">€' + yearDeploy.toFixed(1) + 'M</span>' +
+      '</div>';
+  }
+}
+document.querySelectorAll('#deploySim input').forEach(function(input) {
+  input.addEventListener('input', updateDeploySim);
 });
 </script>
 </body></html>
