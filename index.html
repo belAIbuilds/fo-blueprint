@@ -44,6 +44,7 @@ body{font-family:'Instrument Sans',system-ui,sans-serif;color:var(--body);backgr
 .cover-sub{font-size:1.05rem;font-weight:400;color:rgba(255,255,255,.48);max-width:580px;margin-bottom:3rem;line-height:1.6}
 .cover-meta{display:flex;gap:3rem;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:1.5px;color:rgba(255,255,255,.22);text-transform:uppercase;flex-wrap:wrap;justify-content:center}
 .cover-meta strong{color:rgba(255,255,255,.42);display:block;margin-bottom:.1rem}
+.cover-ownership{position:absolute;bottom:2rem;left:0;right:0;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:1px;color:rgba(255,255,255,.25);text-align:center}
 
 /* Legend */
 .legend{background:var(--surface);border:1px solid var(--rule);padding:1.5rem 2rem;margin-bottom:1.5rem;box-shadow:var(--shadow);font-size:.76rem}
@@ -312,11 +313,30 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
 .proj-table td{padding:.4rem .5rem;font-size:.75rem;border-bottom:1px solid var(--rule-lt);text-align:center}
 .proj-table td:first-child{text-align:left}
 .proj-table .irr-input{width:45px;padding:.25rem;border:1px solid var(--rule);border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:.78rem;text-align:center;background:var(--surface-alt)}
-.proj-table .irr-input:focus{outline:none;border-color:var(--gold);background:var(--gold-bg)}
+.proj-table .irr-input:focus,.proj-table .alloc-input:focus{outline:none;border-color:var(--gold);background:var(--gold-bg)}
+.proj-table .alloc-input{width:40px;padding:.25rem;border:1px solid var(--rule);border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:.78rem;text-align:center;background:var(--surface-alt)}
+.proj-table .total-row #projTotalAlloc.error{color:#943030}
 .proj-table .proj-cap{font-family:'JetBrains Mono',monospace;color:var(--caption)}
 .proj-table .proj-moic{font-family:'JetBrains Mono',monospace;color:var(--navy)}
 .proj-table .proj-val{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold)}
 .proj-table .total-row td{background:var(--gold-bg)}
+
+/* Line Charts */
+.chart-container{background:var(--surface);border:1px solid var(--rule);padding:1.5rem;margin:1.5rem 0;border-radius:8px}
+.chart-header-left{margin-bottom:1rem}
+.chart-title{font-family:'Crimson Pro',serif;font-size:1rem;font-weight:700;color:var(--navy)}
+.chart-subtitle{font-size:.72rem;color:var(--caption);margin-top:.15rem}
+.line-chart{width:100%;overflow-x:auto;position:relative}
+.line-chart svg{width:100%;height:auto;min-width:500px}
+.chart-tooltip{position:absolute;background:var(--navy);color:#fff;padding:.4rem .6rem;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:.72rem;pointer-events:none;opacity:0;transition:opacity .15s ease;white-space:nowrap;z-index:10}
+.chart-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--navy)}
+.chart-legend-inline{display:flex;align-items:center;gap:.5rem;margin-top:1rem;font-size:.75rem;color:var(--caption)}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.chart-legend-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem;justify-content:center}
+.legend-item{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--body)}
+.legend-line{width:20px;height:3px;border-radius:2px;flex-shrink:0}
+.legend-line.dashed{background:linear-gradient(90deg, currentColor 60%, transparent 60%);background-size:6px 3px}
+.legend-line.dotted{background:linear-gradient(90deg, currentColor 40%, transparent 40%);background-size:5px 3px}
 
 /* Scenario Probability Calculator */
 .prob-inputs{display:flex;flex-direction:column;gap:.6rem}
@@ -794,6 +814,7 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
     <div><strong>Modules</strong>7 Integrated</div>
     <div><strong>Version</strong>Draft 1.0 · 2026</div>
   </div>
+  <div class="cover-ownership">This document is the property of Béla Essinger. Unauthorized distribution prohibited.</div>
 </div>
 
 <div class="doc">
@@ -3511,19 +3532,19 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
     </div>
     <table class="proj-table" id="projResults">
       <thead>
-        <tr><th>Asset Class</th><th>Allocation</th><th>Capital</th><th>IRR %</th><th>10Y MOIC</th><th>Terminal Value</th></tr>
+        <tr><th>Asset Class</th><th>Alloc %</th><th>Capital</th><th>IRR %</th><th>10Y MOIC</th><th>Terminal Value</th></tr>
       </thead>
       <tbody>
-        <tr data-alloc="25"><td>VC Direct</td><td>25%</td><td class="proj-cap">€25M</td><td><input type="number" class="irr-input" value="27" min="0" max="50"></td><td class="proj-moic">4.5x</td><td class="proj-val">€112.5M</td></tr>
-        <tr data-alloc="10"><td>VC Funds</td><td>10%</td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="18" min="0" max="50"></td><td class="proj-moic">2.2x</td><td class="proj-val">€22.0M</td></tr>
-        <tr data-alloc="8"><td>Co-Investments</td><td>8%</td><td class="proj-cap">€8M</td><td><input type="number" class="irr-input" value="22" min="0" max="50"></td><td class="proj-moic">3.0x</td><td class="proj-val">€24.0M</td></tr>
-        <tr data-alloc="10"><td>Private Equity</td><td>10%</td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="17" min="0" max="50"></td><td class="proj-moic">2.0x</td><td class="proj-val">€20.0M</td></tr>
-        <tr data-alloc="7"><td>Venture Building</td><td>7%</td><td class="proj-cap">€7M</td><td><input type="number" class="irr-input" value="30" min="0" max="50"></td><td class="proj-moic">5.0x</td><td class="proj-val">€35.0M</td></tr>
-        <tr data-alloc="20"><td>Public Equities</td><td>20%</td><td class="proj-cap">€20M</td><td><input type="number" class="irr-input" value="13" min="0" max="50"></td><td class="proj-moic">3.4x</td><td class="proj-val">€68.0M</td></tr>
-        <tr data-alloc="10"><td>ETFs / Index</td><td>10%</td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="9" min="0" max="50"></td><td class="proj-moic">2.4x</td><td class="proj-val">€24.0M</td></tr>
-        <tr data-alloc="7"><td>Real Estate</td><td>7%</td><td class="proj-cap">€7M</td><td><input type="number" class="irr-input" value="7" min="0" max="50"></td><td class="proj-moic">2.0x</td><td class="proj-val">€14.0M</td></tr>
-        <tr data-alloc="3"><td>Cash</td><td>3%</td><td class="proj-cap">€3M</td><td><input type="number" class="irr-input" value="3" min="0" max="50"></td><td class="proj-moic">1.3x</td><td class="proj-val">€4.0M</td></tr>
-        <tr class="total-row"><td><strong>Total</strong></td><td>100%</td><td class="proj-cap"><strong id="projTotalCap">€100M</strong></td><td><strong id="projBlendedIrr">~16%</strong></td><td><strong id="projTotalMoic">3.2x</strong></td><td class="proj-val"><strong id="projTotalVal">€323.5M</strong></td></tr>
+        <tr><td>VC Direct</td><td><input type="number" class="alloc-input" value="25" min="0" max="100"></td><td class="proj-cap">€25M</td><td><input type="number" class="irr-input" value="27" min="0" max="50"></td><td class="proj-moic">4.5x</td><td class="proj-val">€112.5M</td></tr>
+        <tr><td>VC Funds</td><td><input type="number" class="alloc-input" value="10" min="0" max="100"></td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="18" min="0" max="50"></td><td class="proj-moic">2.2x</td><td class="proj-val">€22.0M</td></tr>
+        <tr><td>Co-Investments</td><td><input type="number" class="alloc-input" value="8" min="0" max="100"></td><td class="proj-cap">€8M</td><td><input type="number" class="irr-input" value="22" min="0" max="50"></td><td class="proj-moic">3.0x</td><td class="proj-val">€24.0M</td></tr>
+        <tr><td>Private Equity</td><td><input type="number" class="alloc-input" value="10" min="0" max="100"></td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="17" min="0" max="50"></td><td class="proj-moic">2.0x</td><td class="proj-val">€20.0M</td></tr>
+        <tr><td>Venture Building</td><td><input type="number" class="alloc-input" value="7" min="0" max="100"></td><td class="proj-cap">€7M</td><td><input type="number" class="irr-input" value="30" min="0" max="50"></td><td class="proj-moic">5.0x</td><td class="proj-val">€35.0M</td></tr>
+        <tr><td>Public Equities</td><td><input type="number" class="alloc-input" value="20" min="0" max="100"></td><td class="proj-cap">€20M</td><td><input type="number" class="irr-input" value="13" min="0" max="50"></td><td class="proj-moic">3.4x</td><td class="proj-val">€68.0M</td></tr>
+        <tr><td>ETFs / Index</td><td><input type="number" class="alloc-input" value="10" min="0" max="100"></td><td class="proj-cap">€10M</td><td><input type="number" class="irr-input" value="9" min="0" max="50"></td><td class="proj-moic">2.4x</td><td class="proj-val">€24.0M</td></tr>
+        <tr><td>Real Estate</td><td><input type="number" class="alloc-input" value="7" min="0" max="100"></td><td class="proj-cap">€7M</td><td><input type="number" class="irr-input" value="7" min="0" max="50"></td><td class="proj-moic">2.0x</td><td class="proj-val">€14.0M</td></tr>
+        <tr><td>Cash</td><td><input type="number" class="alloc-input" value="3" min="0" max="100"></td><td class="proj-cap">€3M</td><td><input type="number" class="irr-input" value="3" min="0" max="50"></td><td class="proj-moic">1.3x</td><td class="proj-val">€4.0M</td></tr>
+        <tr class="total-row"><td><strong>Total</strong></td><td><strong id="projTotalAlloc">100%</strong></td><td class="proj-cap"><strong id="projTotalCap">€100M</strong></td><td><strong id="projBlendedIrr">~16%</strong></td><td><strong id="projTotalMoic">3.2x</strong></td><td class="proj-val"><strong id="projTotalVal">€323.5M</strong></td></tr>
       </tbody>
     </table>
   </div>
@@ -3533,6 +3554,69 @@ td.fill{color:var(--faint);font-style:italic;background:#fefefe;border:1px dashe
     <div class="kpi"><div class="kpi-v" id="kpiMoic">3.2x</div><div class="kpi-l">Portfolio MOIC</div></div>
     <div class="kpi"><div class="kpi-v" id="kpiIrr">~16%</div><div class="kpi-l">Blended IRR</div></div>
     <div class="kpi"><div class="kpi-v" id="kpiCreated">€223M</div><div class="kpi-l">Net Value Created</div></div>
+  </div>
+
+  <h3>Portfolio Growth Trajectory</h3>
+  <div class="chart-container" id="growthChart">
+    <div class="chart-header-left">
+      <div class="chart-title">Projected Portfolio Value Over Time</div>
+      <div class="chart-subtitle">Based on current IRR assumptions</div>
+    </div>
+    <div class="line-chart">
+      <svg id="growthChartSvg" viewBox="0 0 700 320" preserveAspectRatio="xMidYMid meet">
+        <!-- Grid lines -->
+        <g class="grid-lines" stroke="#e5e5e5" stroke-width="1">
+          <line x1="70" y1="50" x2="680" y2="50"/>
+          <line x1="70" y1="100" x2="680" y2="100"/>
+          <line x1="70" y1="150" x2="680" y2="150"/>
+          <line x1="70" y1="200" x2="680" y2="200"/>
+          <line x1="70" y1="250" x2="680" y2="250"/>
+        </g>
+        <!-- Y-axis labels -->
+        <g class="y-labels" fill="#6b7280" font-size="11" font-family="JetBrains Mono, monospace">
+          <text x="65" y="54" text-anchor="end" id="yLabel4">€400M</text>
+          <text x="65" y="104" text-anchor="end" id="yLabel3">€300M</text>
+          <text x="65" y="154" text-anchor="end" id="yLabel2">€200M</text>
+          <text x="65" y="204" text-anchor="end" id="yLabel1">€100M</text>
+          <text x="65" y="254" text-anchor="end">€0</text>
+        </g>
+        <!-- X-axis labels -->
+        <g class="x-labels" fill="#6b7280" font-size="11" font-family="JetBrains Mono, monospace" text-anchor="middle">
+          <text x="70" y="280">Y0</text>
+          <text x="131" y="280">Y1</text>
+          <text x="192" y="280">Y2</text>
+          <text x="253" y="280">Y3</text>
+          <text x="314" y="280">Y4</text>
+          <text x="375" y="280">Y5</text>
+          <text x="436" y="280">Y6</text>
+          <text x="497" y="280">Y7</text>
+          <text x="558" y="280">Y8</text>
+          <text x="619" y="280">Y9</text>
+          <text x="680" y="280">Y10</text>
+        </g>
+        <!-- Axis lines -->
+        <line x1="70" y1="250" x2="680" y2="250" stroke="#d1d5db" stroke-width="2"/>
+        <line x1="70" y1="50" x2="70" y2="250" stroke="#d1d5db" stroke-width="2"/>
+        <!-- Growth line (will be updated by JS) -->
+        <path id="growthLine" fill="none" stroke="#b07818" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Area fill -->
+        <path id="growthArea" fill="url(#goldGradient)" opacity="0.2"/>
+        <!-- Gradient definition -->
+        <defs>
+          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#b07818" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#b07818" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Data points -->
+        <g id="growthPoints"></g>
+      </svg>
+      <div class="chart-tooltip" id="growthTooltip"></div>
+    </div>
+    <div class="chart-legend-inline">
+      <span class="legend-dot" style="background:#b07818"></span>
+      <span>Total Portfolio Value</span>
+    </div>
   </div>
 
   <h3>Value Creation Attribution</h3>
@@ -6464,15 +6548,18 @@ function updateProjectionSim() {
   var rows = document.querySelectorAll('#projResults tbody tr:not(.total-row)');
   var totalCap = 0;
   var totalVal = 0;
+  var totalAlloc = 0;
   var weightedIrr = 0;
   
   rows.forEach(function(row) {
-    var alloc = parseFloat(row.getAttribute('data-alloc')) || 0;
+    var allocInput = row.querySelector('.alloc-input');
+    var alloc = parseFloat(allocInput.value) || 0;
     var irr = parseFloat(row.querySelector('.irr-input').value) || 0;
     var cap = aum * alloc / 100;
     var moic = Math.pow(1 + irr/100, 10);
     var val = cap * moic;
     
+    totalAlloc += alloc;
     totalCap += cap;
     totalVal += val;
     weightedIrr += (alloc/100) * irr;
@@ -6482,7 +6569,11 @@ function updateProjectionSim() {
     row.querySelector('.proj-val').textContent = '€' + val.toFixed(1) + 'M';
   });
   
-  var totalMoic = totalVal / totalCap;
+  var totalMoic = totalCap > 0 ? totalVal / totalCap : 0;
+  
+  var totalAllocEl = document.getElementById('projTotalAlloc');
+  totalAllocEl.textContent = totalAlloc + '%';
+  totalAllocEl.className = totalAlloc === 100 ? '' : 'error';
   
   document.getElementById('projTotalCap').textContent = '€' + totalCap.toFixed(0) + 'M';
   document.getElementById('projBlendedIrr').textContent = '~' + weightedIrr.toFixed(0) + '%';
@@ -6494,6 +6585,106 @@ function updateProjectionSim() {
   document.getElementById('kpiMoic').textContent = totalMoic.toFixed(1) + 'x';
   document.getElementById('kpiIrr').textContent = '~' + weightedIrr.toFixed(0) + '%';
   document.getElementById('kpiCreated').textContent = '€' + Math.round(totalVal - totalCap) + 'M';
+  
+  // Update Growth Line Chart
+  updateGrowthChart(totalCap, totalVal);
+}
+
+function updateGrowthChart(startingAum, terminalValue) {
+  var svg = document.getElementById('growthChartSvg');
+  if (!svg) return;
+  
+  // Calculate implied IRR from terminal value
+  var impliedMoic = terminalValue / startingAum;
+  var irr = Math.pow(impliedMoic, 1/10) - 1;
+  
+  var values = [];
+  var maxVal = 0;
+  
+  // Calculate values for each year using implied IRR
+  for (var i = 0; i <= 10; i++) {
+    var val = startingAum * Math.pow(1 + irr, i);
+    values.push(val);
+    if (val > maxVal) maxVal = val;
+  }
+  
+  // Ensure Year 10 exactly matches terminal value
+  values[10] = terminalValue;
+  
+  // Round up max to nice number for Y-axis
+  var yMax = Math.ceil(maxVal / 100) * 100;
+  if (yMax < 200) yMax = 200;
+  
+  // Update Y-axis labels
+  document.getElementById('yLabel4').textContent = '€' + yMax + 'M';
+  document.getElementById('yLabel3').textContent = '€' + Math.round(yMax * 0.75) + 'M';
+  document.getElementById('yLabel2').textContent = '€' + Math.round(yMax * 0.5) + 'M';
+  document.getElementById('yLabel1').textContent = '€' + Math.round(yMax * 0.25) + 'M';
+  
+  // Chart dimensions - match SVG coordinates
+  var chartLeft = 70, chartRight = 680, chartTop = 50, chartBottom = 250;
+  var chartWidth = chartRight - chartLeft;
+  var chartHeight = chartBottom - chartTop;
+  
+  // Build path
+  var pathPoints = [];
+  var areaPoints = [];
+  
+  for (var i = 0; i <= 10; i++) {
+    var x = chartLeft + (i / 10) * chartWidth;
+    var y = chartBottom - (values[i] / yMax) * chartHeight;
+    pathPoints.push((i === 0 ? 'M' : 'L') + x + ',' + y);
+    areaPoints.push(x + ',' + y);
+  }
+  
+  // Update line path
+  document.getElementById('growthLine').setAttribute('d', pathPoints.join(' '));
+  
+  // Update area path
+  var areaPath = 'M' + chartLeft + ',' + chartBottom + ' L' + areaPoints.join(' L') + ' L' + chartRight + ',' + chartBottom + ' Z';
+  document.getElementById('growthArea').setAttribute('d', areaPath);
+  
+  // Update data points with hover
+  var pointsGroup = document.getElementById('growthPoints');
+  var tooltip = document.getElementById('growthTooltip');
+  pointsGroup.innerHTML = '';
+  
+  for (var i = 0; i <= 10; i++) {
+    var x = chartLeft + (i / 10) * chartWidth;
+    var y = chartBottom - (values[i] / yMax) * chartHeight;
+    var val = values[i];
+    
+    var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('cx', x);
+    circle.setAttribute('cy', y);
+    circle.setAttribute('r', '5');
+    circle.setAttribute('fill', '#b07818');
+    circle.setAttribute('stroke', '#fff');
+    circle.setAttribute('stroke-width', '2');
+    circle.setAttribute('data-year', i);
+    circle.setAttribute('data-value', val.toFixed(1));
+    circle.style.cursor = 'pointer';
+    circle.style.transition = 'r 0.15s ease';
+    
+    circle.addEventListener('mouseenter', function(e) {
+      var yr = e.target.getAttribute('data-year');
+      var v = e.target.getAttribute('data-value');
+      tooltip.textContent = 'Year ' + yr + ': €' + v + 'M';
+      tooltip.style.opacity = '1';
+      var rect = e.target.getBoundingClientRect();
+      var containerRect = e.target.closest('.line-chart').getBoundingClientRect();
+      tooltip.style.left = (rect.left - containerRect.left + rect.width/2 - tooltip.offsetWidth/2) + 'px';
+      tooltip.style.top = (rect.top - containerRect.top - 35) + 'px';
+      e.target.setAttribute('r', '7');
+    });
+    
+    circle.addEventListener('mouseleave', function(e) {
+      tooltip.style.opacity = '0';
+      e.target.setAttribute('r', '5');
+    });
+    
+    pointsGroup.appendChild(circle);
+  }
 }
 
 var projAum = document.getElementById('projAum');
@@ -6502,6 +6693,11 @@ if (projAum) {
   document.querySelectorAll('#projResults .irr-input').forEach(function(input) {
     input.addEventListener('input', updateProjectionSim);
   });
+  document.querySelectorAll('#projResults .alloc-input').forEach(function(input) {
+    input.addEventListener('input', updateProjectionSim);
+  });
+  // Initial chart render - 100M starting, 323.5M terminal (default values)
+  updateGrowthChart(100, 323.5);
 }
 
 // Scenario Probability Calculator
@@ -6536,6 +6732,7 @@ function updateProbCalc() {
     document.getElementById('expectedValue').textContent = '€' + Math.round(expMoic * 100) + 'M';
   }
 }
+
 probSliders.forEach(function(slider) {
   slider.addEventListener('input', updateProbCalc);
 });
